@@ -1,8 +1,10 @@
 Some notes:
 
+- Remember to <code>git push</code> and <code>git pull </code>whenever necessary.
+
 - django-kcproject-starter instructions are in file "previousREADME.md"
 
-- After initial pull from repo, go into main rockclimbingapp directory and do pipenv shell, pipenv install --skip-lock --dev
+- After initial pull from repo, go into main rockclimbingapp directory and do <code>pipenv shell</code>, <code>pipenv install --skip-lock --dev</code>
 
 - Django files modified to work with React: settings/base.py, apps/core/views.py, apps/core/urls.py
 
