@@ -15,3 +15,10 @@ def about(request):
 
     return render(request, 'pages/about.html', context)
 
+# This was added per instructions in the django-kcproject-starter README for adding a React App.
+# This is supposed to serve up frontend's index.html in the build directory to "kick things off"?
+
+from django.http import HttpResponse
+def react_app(request):
+    index_contents = open('./frontend/build/index.html').read()
+    return HttpResponse(index_contents)

@@ -126,3 +126,10 @@ LOGIN_URL = '/account/login/'
 
 # Specify we are using a custom user model
 AUTH_USER_MODEL = 'accounts.User'
+
+# This was added via instructions in the django-kcproject-starter README for adding a React App.
+# This is supposed to serve up React's compiled JS, CSS, etc as additional static files (I imagine build's need to be run often?) 
+
+STATICFILES_DIRS = [
+    os.path.join(BASE_DIR, '..', 'frontend', 'build', 'static'),
+]
