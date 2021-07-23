@@ -1,0 +1,49 @@
+body {
+    margin-left: 0px;
+    margin-right: 0px;
+    background: url(../images/rockywall.png) repeat 0 0;
+}
+
+.header {
+    background-color: #db4b15;
+    margin: 1rem 0rem;
+    padding: 1rem;
+    height: 20rem;
+    text-align: center;
+}
+
+.title {
+    font-size: 4rem;
+}
+
+.button {
+    text-decoration: none;
+    background-color: rgba(65, 66, 65, 0.801);
+    color: #eea700;
+    border: 0;
+    padding: 1rem;
+    font-size: 2rem;
+    border-radius: 1rem;
+    border: .3rem solid;
+    transition: background-color .2s,
+                color .2s;
+}
+
+.container__buttons a {
+    text-decoration: none;
+}
+
+.button:hover {
+    background-color: #eea700;
+    color: rgba(65, 66, 65, 0.801);
+    
+}
+
+.container__buttons {
+    margin: 2rem;
+}
+
+.pageCenter {
+    max-width: 956px;
+    margin: auto;
+  }

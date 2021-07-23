@@ -1,0 +1,208 @@
+/* From: https://codepen.io/varjatua/pen/tvqug*/
+
+.logo {
+    height: 3rem;
+  background: #4b4b4e;
+  padding-right: 30px;
+  list-style: none;
+  float: left;
+}
+
+
+.header-nav-container {
+  height: 3rem;
+  background: #4b4b4e;
+}
+.header-nav-container #header-nav #nav {
+  margin-left: 19px;
+}
+.header-nav-container #header-nav #nav ol {
+  position: relative;
+  overflow: hidden;
+  height: 26px;
+}
+.header-nav-container #header-nav #nav ol li {
+  padding-right: 30px;
+  list-style: none;
+  float: left;
+}
+.header-nav-container #header-nav #nav ol li a {
+  font: 400 15px/22px arial;
+  color: #cccccc;
+  text-decoration: none;
+}
+.header-nav-container #header-nav #nav ol li a:hover {
+  color: #ffffff;
+}
+.header-nav-container #header-nav #nav ol li#magic-line {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  padding: 0;
+  width: 100px;
+  height: 4px;
+  background: red;
+}
+.header-nav-container #header-nav #nav ol li.active a {
+  color: #ffffff;
+}
+
+
+
+/*MY attempt*/
+
+.nav {
+  display: flex;
+  margin: 0.5rem;
+}
+
+.nav__link {
+
+  width: 30%;
+  max-width: 12rem;
+  margin: auto;
+  background-color: rgb(170, 0, 29);
+  border: 2px solid black;
+  color: black;
+  border-radius: 1rem;
+  font-size: 1.4rem;
+  text-align: center;
+  text-decoration: none;
+}
+
+.profileBlock {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  border: 2px solid black;
+  max-width: 90%;
+  margin: auto;
+}
+
+.profileBlock--center {
+  justify-content: center;
+}
+.profileBlock--spaceAround {
+  justify-content: space-around;
+}
+.profileBlock--spaceBetween {
+  justify-content: space-around;
+}
+
+.profileBlock__statOverview {
+  text-align: center;
+}
+
+.profileBlock__statOverview--num {
+  font-size: 3rem;
+  margin: 1rem;
+}
+.profileBlock__statOverview--text {
+  font-size: 1rem;
+  margin: 1rem;
+}
+
+.profileBlock__picture {
+  width: 8rem;
+  height: 8rem;
+  border: 2px solid red;
+  border-radius: 5rem;
+  margin: 1rem;
+}
+.profileBlock__picture--img {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+.profileBlock__imgLarge {
+  margin: 1rem;
+  border: 2px solid blue;
+  width: 30rem;
+  height: 12rem;
+}
+.profileBlock__imgLarge--pic {
+  width: 100%;
+  height: auto;
+  max-height: 12rem;
+  object-fit: cover;
+}
+
+.profileBlock__user--name {
+  text-align: center;
+}
+
+.climbCard {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  border: 2px solid black;
+  margin: 1rem;
+  padding: 0.5rem;
+  max-height: 26rem;
+}
+.climbCard--positionOne {
+  order: 1;
+  width: 60%;
+  max-height: 26rem;
+}
+.climbCard--positionTwo {
+  order: 2;
+  width: 40%;
+  max-height: 26rem;
+}
+.climbCard__title {
+  font-size: 2.5rem;
+  padding: 0rem 1rem;
+  font-weight: bold;
+}
+.climbCard__title a {
+  color: black;
+  text-decoration: none;
+}
+
+.climbCard__title a:hover {
+  text-decoration:underline;
+}
+
+.climbCard__detail {
+  font-size: 1.2rem;
+  padding: 0rem 1rem;
+}
+
+.climbCard__desc {
+  font-size: 1rem;
+  padding: 1rem;
+  text-overflow: ellipsis;
+  line-height: 1.7rem;
+  max-height: 5rem;
+  white-space: nowrap;
+  overflow: hidden;
+  line-height: var(--lh);
+}
+
+.climbCard__desc--overflow {
+  --max-lines: 3;
+  position: relative;
+  max-height: calc((1rem) * var(--max-lines));
+  overflow: hidden;
+  padding-right: 1rem; /* space for ellipsis */
+  text-overflow: ellipsis;
+}
+
+
+.climbCard__pictureBox {
+  margin: 1rem;
+  border: 2px solid green;
+  width: 20rem;
+  height: 25rem;
+  margin: 0 auto;
+}
+
+.climbCard__pictureBox--pic {
+  width: auto;
+  max-width: 20rem;
+  height: 100%;
+  object-fit: cover;
+}
+
