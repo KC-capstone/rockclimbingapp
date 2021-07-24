@@ -64,12 +64,15 @@
   background-color: rgb(170, 0, 29);
   border: 2px solid black;
   color: black;
-  border-radius: 1rem;
+  border-radius: 0.7rem;
   font-size: 1.4rem;
   text-align: center;
   text-decoration: none;
+  transition: border-radius .15s;
 }
-
+.nav__link:hover {
+  border-radius: 1rem;
+}
 .profileBlock {
   display: flex;
   flex-wrap: wrap;
@@ -139,35 +142,63 @@
   border: 2px solid black;
   margin: 1rem;
   padding: 0.5rem;
-  max-height: 26rem;
+  border-radius: 1rem;
+  cursor: pointer;
 }
+
+.climbCard--shadow {
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  transition: all 0.15s cubic-bezier(.25,.8,.25,1);
+}
+
+.climbCard--shadow:hover {
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+.climbCard--shadow:active {
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
+
+
+
 .climbCard--positionOne {
   order: 1;
-  width: 60%;
-  max-height: 26rem;
+  width: 53%;
 }
-.climbCard--positionTwo {
+
+
+.climbCard__pictureBox {
   order: 2;
-  width: 40%;
+  width: 38%;
+  min-width: 20rem;
+  /*
   max-height: 26rem;
+  width: 20rem;
+  */
+  border: 2px solid green;
+  margin: 0 auto;
 }
+
+.climbCard__pictureBox--pic {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
 .climbCard__title {
-  font-size: 2.5rem;
+  font-size: 2.2rem;
   padding: 0rem 1rem;
   font-weight: bold;
+  margin: 0.3rem;
 }
 .climbCard__title a {
   color: black;
   text-decoration: none;
 }
 
-.climbCard__title a:hover {
-  text-decoration:underline;
-}
-
 .climbCard__detail {
   font-size: 1.2rem;
   padding: 0rem 1rem;
+  margin: 0rem;
 }
 
 .climbCard__desc {
@@ -191,18 +222,15 @@
 }
 
 
-.climbCard__pictureBox {
-  margin: 1rem;
-  border: 2px solid green;
-  width: 20rem;
-  height: 25rem;
-  margin: 0 auto;
-}
 
-.climbCard__pictureBox--pic {
-  width: auto;
-  max-width: 20rem;
-  height: 100%;
-  object-fit: cover;
+@media (max-device-width: 750px) {
+  .climbCard--smallOne {
+    order: 1;
+  }
+  .climbCard--smallTwo {
+    order: 2;
+  }
+  .climbCard--smallThree {
+    order: 3;
+  }
 }
-
