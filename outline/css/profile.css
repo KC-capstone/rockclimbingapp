@@ -1,67 +1,13 @@
-/* From: https://codepen.io/varjatua/pen/tvqug*/
-
-.logo {
-    height: 3rem;
-  background: #4b4b4e;
-  padding-right: 30px;
-  list-style: none;
-  float: left;
-}
-
-
-.header-nav-container {
-  height: 3rem;
-  background: #4b4b4e;
-}
-.header-nav-container #header-nav #nav {
-  margin-left: 19px;
-}
-.header-nav-container #header-nav #nav ol {
-  position: relative;
-  overflow: hidden;
-  height: 26px;
-}
-.header-nav-container #header-nav #nav ol li {
-  padding-right: 30px;
-  list-style: none;
-  float: left;
-}
-.header-nav-container #header-nav #nav ol li a {
-  font: 400 15px/22px arial;
-  color: #cccccc;
-  text-decoration: none;
-}
-.header-nav-container #header-nav #nav ol li a:hover {
-  color: #ffffff;
-}
-.header-nav-container #header-nav #nav ol li#magic-line {
-  position: absolute;
-  bottom: 0;
-  left: 0;
-  padding: 0;
-  width: 100px;
-  height: 4px;
-  background: red;
-}
-.header-nav-container #header-nav #nav ol li.active a {
-  color: #ffffff;
-}
-
-
-
-/*MY attempt*/
-
 .nav {
   display: flex;
   margin: 0.5rem;
 }
 
 .nav__link {
-
   width: 30%;
   max-width: 12rem;
   margin: auto;
-  background-color: rgb(170, 0, 29);
+  background-color: var(--red-icon);
   border: 2px solid black;
   color: black;
   border-radius: 0.7rem;
@@ -73,6 +19,28 @@
 .nav__link:hover {
   border-radius: 1rem;
 }
+
+.nav__link--logActivity {
+  background-color: var(--green-button);
+  color: var(--green-button-text);
+  border-radius: 5rem;
+  width: 3rem;
+  height: 3rem;
+}
+
+.nav__link--centerContainer {
+  position: relative;
+  height: 3rem;
+}
+
+.nav__link--center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
+
+
 .profileBlock {
   display: flex;
   flex-wrap: wrap;

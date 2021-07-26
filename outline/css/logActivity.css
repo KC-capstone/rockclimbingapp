@@ -1,0 +1,64 @@
+.logActivityForm {
+    box-sizing: border-box;
+    margin: 0.5rem 1rem;
+}
+
+.logActivityForm__rows {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    
+}
+
+.logActivityForm__rows--spacing {
+    box-sizing: border-box;
+    margin: 0.5rem 1rem; 
+}
+
+.logActivityForm legend {
+    margin: 0.5rem 1rem;
+}
+.logActivityForm input {
+    padding: 0rem 0.5rem;
+    width: 15rem;
+    border-radius: 1rem;
+    border: 1px grey solid;
+    box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
+}
+.logActivityForm textarea {
+    width: 25rem;
+    resize: vertical;
+    padding:15px;
+    border-radius:1rem;
+    border:0;
+    box-shadow:4px 4px 10px rgba(0,0,0,0.06);
+    height:150px;
+}
+.logActivityForm input[type=number] {
+    width: 3.3rem;
+    height: 2rem;
+}
+.logActivityForm input[type=file] {
+    width: 25rem;
+    height: 2rem;
+    padding: 0.5rem;
+}
+.logActivityForm select {
+    font-size: 1.2rem;
+}
+
+.buttonSubmit {
+    width: 6rem;
+    height: 3rem;
+    border-radius: 5rem;
+    font-size: 1.2rem;
+}
+.buttonSubmit__green {
+    background-color: var(--green-button);
+    color: var(--green-button-text);
+}
+.buttonSubmit__black {
+    background-color: var(--black-button);
+    color: var(--green-button-text);
+}
+

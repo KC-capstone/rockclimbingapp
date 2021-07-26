@@ -1,0 +1,120 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Arete - profile</title>
+    <meta name="my site" content="portfolio site">
+    <link rel="stylesheet" href="./css/styles.css" />
+    <link rel="stylesheet" href="./css/profile.css" />
+    <link rel="stylesheet" href="./css/climbs.css" />
+    <link rel="stylesheet" href="./css/climbDetail.css" />
+    <link rel="stylesheet" href="./css/logActivity.css" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Text&display=swap" rel="stylesheet"> 
+    <script src="https://kit.fontawesome.com/1d227557b9.js" crossorigin="anonymous"></script>
+</head>
+<body>
+
+<div class="pageCenter">
+    <div class="nav">
+        <a  class="nav__link" href="./profile.html"><div></div>Profile</a>
+        <a  class="nav__link" href="#"><div>Stats</div></a>
+        <a  class="nav__link" href="./climbs.html"><div>Climbs</div></a>
+        <a  class="nav__link nav__link--logActivity" href="./logActivity.html">
+            <div class="nav__link--centerContainer">
+                <div class="nav__link--center">
+                    <i class="fas fa-plus-square"></i>
+                </div>
+            </div>
+        </a>
+    </div>
+</div>
+<div class='pageCenter'>
+    <h1>Log your Activity</h1>
+    <div class="logActivityForm">
+        <form action="#" method="PUT">
+            <div class="logActivityForm__rows">
+                <div class="logActivityForm__rows--spacing">
+                    <legend>Title</legend>
+                    <input type="text" id="title" value="Rock Climb" required/>
+                </div>
+                <div class="logActivityForm__rows--spacing">
+                    <legend>Rating</legend>
+                    <input type="number" id="Rating" name="rating" min="0" max="5" step="1" required>    
+                </div>
+                <div class="logActivityForm__rows--spacing">
+                    <legend>Route Type</legend>
+                    <select id="route_type" required>
+                        <option>Bouldering</option>
+                        <option>Top Rope</option>
+                        <option>Lead Climb</option>
+                        <option>Outdoor Bouldering</option>
+                        <option>Outdoor Top Rope</option>
+                        <option>Outdoor Lead Climb</option>
+                    </select>
+                </div>
+                <div class="logActivityForm__rows--spacing">
+                    <legend>Description</legend>
+                    <textarea rows="5" cols = "60" maxlength="1000" id="description"></textarea>
+                </div>
+                <div class="logActivityForm__rows--spacing">
+                    <legend>Date</legend>
+                    <input type="date" placeholder="Date" required/>
+                </div>
+                <div class="logActivityForm__rows--spacing">
+                    <legend># of Climbs Completed</legend>
+                    <input type="number" id="climbsCompleted" min="0" step="1" required/>
+                </div>
+                <div class="logActivityForm__rows--spacing">
+                    <legend>Toughest Route Completed:</legend>
+                    <select id="route_type" required>
+                        <option>N/A</option>
+                        <option>V</option>
+                    </select>
+                    <select id="route_type" required>
+                        <option>N/A</option>
+                        <option>B</option>
+                        <option>0</option>
+                        <option>1</option>
+                        <option>2</option>
+                        <option>3</option>
+                        <option>4</option>
+                        <option>5</option>
+                        <option>6</option>
+                        <option>7</option>
+                        <option>8+</option>
+                    </select>
+                </div>
+                <div class="logActivityForm__rows--spacing">
+                    <legend>Upload an Image (optional)</legend>
+                    <input type="file" placeholder="Image Upload" />
+                </div>
+                <div class="logActivityForm__rows--spacing">
+                    <input type="url" placeholder="YouTube Link (optional)" />
+                </div>
+                
+            </div>
+            <div class="logActivityForm__rows--spacing">
+                <button class="buttonSubmit buttonSubmit__green" type="submit">Submit</button>
+                <a href="#" onclick="javascript:window.history.back(-1);return false;">
+                    <button class="buttonSubmit buttonSubmit__black">Cancel</button>
+                </a>
+            </div>
+            
+
+        </form>    
+    </div>
+    
+</div>
+
+
+    
+
+
+</body>
+
+
+
+</html>

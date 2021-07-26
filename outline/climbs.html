@@ -9,38 +9,42 @@
     <link rel="stylesheet" href="./css/styles.css" />
     <link rel="stylesheet" href="./css/profile.css" />
     <link rel="stylesheet" href="./css/climbs.css" />
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-    
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Text&display=swap" rel="stylesheet"> 
+    <script src="https://kit.fontawesome.com/1d227557b9.js" crossorigin="anonymous"></script>
 </head>
 <body>
-
-
-        <div class="nav">
-            <a  class="nav__link" href="./profile.html"><div></div>Profile</a>
-            <a  class="nav__link" href="#"><div>Stats</div></a>
-            <a  class="nav__link" href="./climbs.html"><div>Climbs</div></a>
-        </div>
-
-
+<div class="pageCenter">
+    <div class="nav">
+        <a  class="nav__link" href="./profile.html"><div></div>Profile</a>
+        <a  class="nav__link" href="#"><div>Stats</div></a>
+        <a  class="nav__link" href="./climbs.html"><div>Climbs</div></a>
+        <a  class="nav__link nav__link--logActivity" href="./logActivity.html">
+            <div class="nav__link--centerContainer">
+                <div class="nav__link--center">
+                    <i class="fas fa-plus-square"></i>
+                </div>
+            </div>
+        </a>
+    </div>
     <div class="searchContainer">
-    <div class="searchBar">   
+        <div class="searchBar">   
 
-        <div class="searchCity">
-        <input type="text" class="searchCityin" placeholder="Gym Name"></div>
-        <div class="searchDivider">
+            <div class="searchCity">
+            <input type="text" class="searchCityin" placeholder="Gym Name"></div>
+            <div class="searchDivider">
+            </div>
+            <div class="searchRestaurant">
+            <input type="text" class="searchRestaurantIn" placeholder="Date Range">
+            </div>
+            <div class="searchDivider">
+            </div>
+            <div class="searchRestaurant">
+                <input type="text" class="searchRestaurantIn" placeholder="Difficulty">
+            </div>
         </div>
-        <div class="searchRestaurant">
-        <input type="text" class="searchRestaurantIn" placeholder="Date Range">
-        </div>
-        <div class="searchDivider">
-        </div>
-        <div class="searchRestaurant">
-            <input type="text" class="searchRestaurantIn" placeholder="Difficulty">
-        </div>
+
     </div>
-
-    </div>
-
     <div class='pageCenter'>
         <div class="climbCard climbCard--shadow profileBlock--center">
             <div class="climbCard--positionOne">
@@ -106,12 +110,12 @@
             <a href="#">5</a>
             <a href="#">6</a>
             <a href="#">&raquo;</a>
-          </div>
+        </div>
         </div>
     </div>
+</div>
 
-
-    <script type="text/javascript" src="./js/cardClick.js"></script>
+<script type="text/javascript" src="./js/cardClick.js"></script>
     
 </body>
 
