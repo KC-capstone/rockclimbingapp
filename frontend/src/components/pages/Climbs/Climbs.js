@@ -1,6 +1,7 @@
 import React from 'react';
 import exampleClimb from '../../../assets/exampleClimb.jpg';
 import Nav from '../../Nav/Nav.js';
+import ClimbCard from '../../ClimbCard/ClimbCard.js';
 
 function Climbs() {
   return (
@@ -27,60 +28,9 @@ function Climbs() {
 
     </div>
     <div class='pageCenter'>
-        <div class="climbCard climbCard--shadow profileBlock--center">
-            <div class="climbCard--positionOne">
-                <div class=".climbCard--smallOne">
-                    <p class="climbCard__title"><a class="cardLink" href="./climbDetail.html">Brooklyn Boulders, Partner Climb</a></p>
-                </div>
-                <div class="climbCard--smallThree">
-                    <p class="climbCard__detail">Date: Feb 14, 2019</p>
-                    <p class="climbCard__detail">Climbs: 6</p>
-                    <p class="climbCard__detail">Toughest climb: V3</p>
-                    <div class="climbCard__desc">
-                        <p class="climbCard__desc--overflow">Absolutely loved this! I'd never heard of this before, but they set up a climd that could only be completed with two people! The first pat of the climb wasn't unusual, but then you reach a point where you can't continue without one partner helping the other. We finished it by having one person grab the other's leg and lifting themselves up. Both partners have to top out to complete the climb. Hope they do this again next year!</p>
-                    </div>
-                </div>
-            </div>
-                <div class="climbCard__pictureBox climbCard--smallTwo">
-                    <img class="climbCard__pictureBox--pic" src={exampleClimb} />       
-            </div>
-        </div>
-        <div class="climbCard climbCard--shadow profileBlock--center">
-            <div class="climbCard--positionOne">
-                <div class=".climbCard--smallOne">
-                    <p class="climbCard__title"><a class="cardLink" href="./climbDetail.html">Brooklyn Boulders, Partner Climb</a></p>
-                </div>
-                <div class="climbCard--smallThree">
-                    <p class="climbCard__detail">Date: Feb 14, 2019</p>
-                    <p class="climbCard__detail">Climbs: 6</p>
-                    <p class="climbCard__detail">Toughest climb: V3</p>
-                    <div class="climbCard__desc">
-                        <p class="climbCard__desc--overflow">Absolutely loved this! I'd never heard of this before, but they set up a climd that could only be completed with two people! The first pat of the climb wasn't unusual, but then you reach a point where you can't continue without one partner helping the other. We finished it by having one person grab the other's leg and lifting themselves up. Both partners have to top out to complete the climb. Hope they do this again next year!</p>
-                    </div>
-                </div>
-            </div>
-                <div class="climbCard__pictureBox climbCard--smallTwo">
-                    <img class="climbCard__pictureBox--pic" src={exampleClimb} />       
-            </div>
-        </div>
-        <div class="climbCard climbCard--shadow profileBlock--center">
-            <div class="climbCard--positionOne">
-                <div class=".climbCard--smallOne">
-                    <p class="climbCard__title"><a class="cardLink" href="./climbDetail.html">Brooklyn Boulders, Partner Climb</a></p>
-                </div>
-                <div class="climbCard--smallThree">
-                    <p class="climbCard__detail">Date: Feb 14, 2019</p>
-                    <p class="climbCard__detail">Climbs: 6</p>
-                    <p class="climbCard__detail">Toughest climb: V3</p>
-                    <div class="climbCard__desc">
-                        <p class="climbCard__desc--overflow">Absolutely loved this! I'd never heard of this before, but they set up a climd that could only be completed with two people! The first pat of the climb wasn't unusual, but then you reach a point where you can't continue without one partner helping the other. We finished it by having one person grab the other's leg and lifting themselves up. Both partners have to top out to complete the climb. Hope they do this again next year!</p>
-                    </div>
-                </div>
-            </div>
-                <div class="climbCard__pictureBox climbCard--smallTwo">
-                    <img class="climbCard__pictureBox--pic" src={exampleClimb} />       
-            </div>
-        </div>
+        <ClimbCard />
+        <ClimbCard />
+        <ClimbCard />
         <div class="center">
             <div class="pagination">
             <a href="#">&laquo;</a>
