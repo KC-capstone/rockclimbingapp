@@ -1,32 +1,14 @@
+import React from 'react';
+import defaultProfile from '../../../assets/profileDefault.png';
+import profileBackground from '../../../assets/profileBackground.jpg';
+import exampleClimb from '../../../assets/exampleClimb.jpg';
+import Nav from '../../Nav/Nav.js';
 
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>Arete - profile</title>
-    <meta name="my site" content="portfolio site">
-    <link rel="stylesheet" href="./css/styles.css" />
-    <link rel="stylesheet" href="./css/profile.css" />
-    <link rel="stylesheet" href="./css/climbs.css" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Red+Hat+Text&display=swap" rel="stylesheet"> 
-    <script src="https://kit.fontawesome.com/1d227557b9.js" crossorigin="anonymous"></script>
-</head>
-<body>
-<div class="pageCenter">
-    <div class="nav">
-        <a  class="nav__link" href="./profile.html"><div></div>Profile</a>
-        <a  class="nav__link" href="#"><div>Stats</div></a>
-        <a  class="nav__link" href="./climbs.html"><div>Climbs</div></a>
-        <a  class="nav__link nav__link--logActivity" href="./logActivity.html">
-            <div class="nav__link--centerContainer">
-                <div class="nav__link--center">
-                    <i class="fas fa-plus-square"></i>
-                </div>
-            </div>
-        </a>
-    </div>
+function Climbs() {
+  return (
+      <div>
+    <div class="pageCenter">
+    <Nav />
     <div class="searchContainer">
         <div class="searchBar">   
 
@@ -117,9 +99,8 @@
 </div>
 
 <script type="text/javascript" src="./js/cardClick.js"></script>
-    
-</body>
+    </div>
+  );
+}
 
-
-
-</html>
+export default Climbs;

@@ -3,26 +3,12 @@ import './styles.css';
 import defaultProfile from '../../../assets/profileDefault.png';
 import profileBackground from '../../../assets/profileBackground.jpg';
 import exampleClimb from '../../../assets/exampleClimb.jpg';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPlusSquare } from '@fortawesome/free-solid-svg-icons'
-
+import Nav from '../../Nav/Nav.js';
 
 function Profile() {
   return (
     <div className="pageCenter">
-    <div className="nav">
-        <a  className="nav__link" href="./profile.html"><div></div>Profile</a>
-        <a  className="nav__link" href="#"><div>Stats</div></a>
-        <a  className="nav__link" href="./climbs.html"><div>Climbs</div></a>
-        <a  className="nav__link nav__link--logActivity" href="./logActivity.html">
-            <div className="nav__link--centerContainer">
-                <div className="nav__link--center">
-                    <i className="fas fa-plus-square"></i>
-                    <FontAwesomeIcon icon={faPlusSquare} />
-                </div>
-            </div>
-        </a>
-    </div>
+    <Nav />
     
 
     <div className="profileBlock profileBlock--center">

@@ -3,6 +3,7 @@ import { Link, Switch, Route } from 'react-router-dom'
 import './App.css';
 import Index from './components/pages/Index/Index.js';
 import Profile from './components/pages/Profile/Profile.js';
+import Climbs from './components/pages/Climbs/Climbs.js';
 import ClimbDetail from './components/pages/ClimbDetail/ClimbDetail.js';
 
 function App() {
@@ -14,9 +15,12 @@ function App() {
 
   return (
     <div>
-    {page === 'profile' ? (
-      <Index />
-    ) : null}
+
+    <Switch>
+          <Route exact path='/' component={Index} />
+          <Route exact path='/profile/' component={Profile} />
+          <Route exact path='/climbs/' component={Climbs} />
+    </Switch>
     </div>
   );
 }
