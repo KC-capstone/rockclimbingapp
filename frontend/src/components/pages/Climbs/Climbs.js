@@ -1,6 +1,4 @@
 import React from 'react';
-import defaultProfile from '../../../assets/profileDefault.png';
-import profileBackground from '../../../assets/profileBackground.jpg';
 import exampleClimb from '../../../assets/exampleClimb.jpg';
 import Nav from '../../Nav/Nav.js';
 
@@ -44,7 +42,7 @@ function Climbs() {
                 </div>
             </div>
                 <div class="climbCard__pictureBox climbCard--smallTwo">
-                    <img class="climbCard__pictureBox--pic" src="./images/exampleClimb.jpg" />       
+                    <img class="climbCard__pictureBox--pic" src={exampleClimb} />       
             </div>
         </div>
         <div class="climbCard climbCard--shadow profileBlock--center">
@@ -62,7 +60,7 @@ function Climbs() {
                 </div>
             </div>
                 <div class="climbCard__pictureBox climbCard--smallTwo">
-                    <img class="climbCard__pictureBox--pic" src="./images/exampleClimb.jpg" />       
+                    <img class="climbCard__pictureBox--pic" src={exampleClimb} />       
             </div>
         </div>
         <div class="climbCard climbCard--shadow profileBlock--center">
@@ -80,7 +78,7 @@ function Climbs() {
                 </div>
             </div>
                 <div class="climbCard__pictureBox climbCard--smallTwo">
-                    <img class="climbCard__pictureBox--pic" src="./images/exampleClimb.jpg" />       
+                    <img class="climbCard__pictureBox--pic" src={exampleClimb} />       
             </div>
         </div>
         <div class="center">
