@@ -1,0 +1,530 @@
+/*** styles  ***/
+:root {
+    --green-button: hsl(150, 67.1%, 27.5%);
+    --green-button-text: hsl(0, 0%, 90.6%);
+    --red-icon: hsl(349.8, 100%, 33.3%);
+    --black-button: hsl(349.1, 7.7%, 28%);
+
+  }
+body {
+    margin-left: 0px;
+    margin-right: 0px;
+    background: url(../../../assets/rockywall.png) repeat 0 0;
+    font-family: 'Red Hat Text', sans-serif;
+}
+
+.header {
+    background-color: #db4b15;
+    margin: 1rem 0rem;
+    padding: 1rem;
+    height: 20rem;
+    text-align: center;
+}
+
+.title {
+    font-size: 4rem;
+}
+
+.button {
+    text-decoration: none;
+    background-color: rgba(65, 66, 65, 0.801);
+    color: #eea700;
+    border: 0;
+    padding: 1rem;
+    font-size: 2rem;
+    border-radius: 1rem;
+    border: .3rem solid;
+    transition: background-color .2s,
+                color .2s;
+}
+
+.container__buttons a {
+    text-decoration: none;
+}
+
+.button:hover {
+    background-color: #eea700;
+    color: rgba(65, 66, 65, 0.801);
+    
+}
+
+.container__buttons {
+    margin: 2rem;
+}
+
+.pageCenter {
+    max-width: 956px;
+    margin: auto;
+}
+
+/*** Climbs  ***/
+
+
+/*** climbDetail  ***/
+.climbDetailOverview__img {
+    border: 2px solid red;   
+    max-width: 8rem;
+    max-height: 8rem;
+    display: inline-block;
+    border-radius: 5rem;
+}
+.climbDetailOverview__title {
+    border: 2px solid green;
+    max-width: 25rem;
+    display: inline-block;
+    font-size: .8rem;
+}
+.climbDetailOverview__rating {
+    border: 2px solid orange;
+    width: 12rem;
+    max-height: 2rem;
+}
+.climbDetailOverview__rating--icon {
+    display: inline;
+    width: 2rem;
+}
+.climbDetailOverview__difficulty {
+    font-size: 1.5rem;
+}
+.climbDetailOverview__date {
+    font-size: 1rem;
+}
+.climbDetailOverview__desc {
+    padding: 1rem;
+}
+.climbDetailOverview__youTube {
+    display: flex;
+    justify-content: space-around;
+    border: 2px solid pink;  
+}
+.climbDetailOverview__imageCarousel {
+    border: 2px solid green;
+    max-width: 25rem;
+    font-size: .8rem;
+    display: flex;
+    justify-content: center;
+}
+
+/*** Climbs  ***/
+:root {
+  --main-bg-color: coral;
+  --searchButton-bg-color:#C32F10;
+  --gray-color:rgb(2, 207, 207);
+}
+.searchContainer {
+  font-weight: 300;
+  font-family: Okra, Helvetica, sans-serif;
+  box-sizing: inherit;
+  -webkit-tap-highlight-color: transparent;
+  font-size: 1.6rem;
+  margin: 0 auto;
+  margin-top: 3rem;
+  border-width: 0px;
+  width: calc(85% - 4.8rem);
+  
+}
+.searchBar {
+  display: flex;
+  -webkit-box-align: center;
+  align-items: center;
+  height: 4.4rem;
+  box-shadow: rgba(28, 28, 28, 0.08) 0px 2px 8px;
+  background: rgb(255, 255, 255);
+  border-radius: 0.8rem;
+  border-width: 1px;
+  border-style: solid;
+  border-color: rgb(232, 232, 232);
+  border-image: initial;
+}
+.searchCity {
+  display: flex;
+  justify-content: space-around;
+  position: relative;
+  height: 100%;
+  width: 10rem;
+  -webkit-box-align: center;
+  align-items: center;
+  border-radius: 0.8rem;
+  padding: 0px 1rem;
+  
+}
+.searchDivider {
+  width: 0rem;
+  height: 2rem;
+  border-width: 0.05rem;
+  border-style: solid;
+  border-color: rgb(207, 207, 207);
+  border-image: initial;
+}
+.searchLocationCityContainer{
+  display: flex;
+  justify-content: space-around;
+  position: relative;
+    -webkit-box-align: center;
+  align-items: center;
+}
+.searchRestaurant  {
+  display: flex;
+  justify-content: space-around;
+  position: relative;
+  height: 100%;
+  width: 24rem;
+  -webkit-box-align: center;
+  align-items: center;
+  border-radius: 0.8rem;
+  padding: 0px 1rem; 
+}
+.submitSearch {
+  display: flex;
+  justify-content: space-around;
+  position: relative;
+  height: 100%;
+  width: 3rem;
+  -webkit-box-align: center;
+  align-items: center;
+  border-radius: 0 1rem 1rem 0;
+  padding: 0px 1rem;
+  background-color:var(--searchButton-bg-color);
+  cursor:pointer;
+  
+}
+.submitSearch:hover{
+  background-color: rgb(236, 70, 84);
+}
+
+.searchIconBar , .searchLocationCity{
+  width:24px;
+  height:24px;
+  display:flex;
+  text-align:center;
+  
+  
+}
+.Icon_material_location_city_Class{
+  fill:var(--gray-color);
+}
+input:active,input:focus {
+  outline: 0;
+}
+input {
+  -webkit-writing-mode: horizontal-tb !important;
+  text-rendering: auto;
+  color: -internal-light-dark-color(black, white);
+  letter-spacing: normal;
+  word-spacing: normal;
+  text-transform: none;
+  text-indent: 0px;
+  text-shadow: none;
+  display: inline-block;
+  text-align: start;
+  /*-webkit-appearance: textfield;*/
+  background-color: -internal-light-dark-color(rgb(255, 255, 255), rgb(59, 59, 59));
+  -webkit-rtl-ordering: logical;
+  cursor: text;
+  margin: 0em;
+  font-size:18px;
+  padding: 1px 2px;
+  height:4rem;
+  border:none;
+  width:100%;
+  
+}
+
+.pagination {
+  display: inline-block;
+}
+
+.pagination a {
+  color: black;
+  float: left;
+  padding: 8px 16px;
+  text-decoration: none;
+  transition: background-color .3s;
+  border: 1px solid #ddd;
+  margin: 0 4px;
+}
+
+.pagination a.active {
+  background-color: #4CAF50;
+  color: white;
+  border: 1px solid #4CAF50;
+}
+
+.pagination a:hover:not(.active) {background-color: #ddd;}
+.center {
+  text-align: center;
+}
+
+/*** logActivity  ***/
+.logActivityForm {
+    box-sizing: border-box;
+    margin: 0.5rem 1rem;
+}
+
+.logActivityForm__rows {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    
+}
+
+.logActivityForm__rows--spacing {
+    box-sizing: border-box;
+    margin: 0.5rem 1rem; 
+}
+
+.logActivityForm legend {
+    margin: 0.5rem 1rem;
+}
+.logActivityForm input {
+    padding: 0rem 0.5rem;
+    width: 15rem;
+    border-radius: 1rem;
+    border: 1px grey solid;
+    box-shadow:0 0 15px 4px rgba(0,0,0,0.06);
+}
+.logActivityForm textarea {
+    width: 25rem;
+    resize: vertical;
+    padding:15px;
+    border-radius:1rem;
+    border:0;
+    box-shadow:4px 4px 10px rgba(0,0,0,0.06);
+    height:150px;
+}
+.logActivityForm input[type=number] {
+    width: 3.3rem;
+    height: 2rem;
+}
+.logActivityForm input[type=file] {
+    width: 25rem;
+    height: 2rem;
+    padding: 0.5rem;
+}
+.logActivityForm select {
+    font-size: 1.2rem;
+}
+
+.buttonSubmit {
+    width: 6rem;
+    height: 3rem;
+    border-radius: 5rem;
+    font-size: 1.2rem;
+}
+.buttonSubmit__green {
+    background-color: var(--green-button);
+    color: var(--green-button-text);
+}
+.buttonSubmit__black {
+    background-color: var(--black-button);
+    color: var(--green-button-text);
+}
+
+
+/*** profile  ***/
+.nav {
+  display: flex;
+  margin: 0.5rem;
+}
+
+.nav__link {
+  width: 30%;
+  max-width: 12rem;
+  margin: auto;
+  background-color: var(--red-icon);
+  border: 2px solid black;
+  color: black;
+  border-radius: 0.7rem;
+  font-size: 1.4rem;
+  text-align: center;
+  text-decoration: none;
+  transition: border-radius .15s;
+}
+.nav__link:hover {
+  border-radius: 1rem;
+}
+
+.nav__link--logActivity {
+  background-color: var(--green-button);
+  color: var(--green-button-text);
+  border-radius: 5rem;
+  width: 3rem;
+  height: 3rem;
+}
+
+.nav__link--centerContainer {
+  position: relative;
+  height: 3rem;
+}
+
+.nav__link--center {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%,-50%);
+}
+
+
+.profileBlock {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  border: 2px solid black;
+  max-width: 90%;
+  margin: auto;
+}
+
+.profileBlock--center {
+  justify-content: center;
+}
+.profileBlock--spaceAround {
+  justify-content: space-around;
+}
+.profileBlock--spaceBetween {
+  justify-content: space-around;
+}
+
+.profileBlock__statOverview {
+  text-align: center;
+}
+
+.profileBlock__statOverview--num {
+  font-size: 3rem;
+  margin: 1rem;
+}
+.profileBlock__statOverview--text {
+  font-size: 1rem;
+  margin: 1rem;
+}
+
+.profileBlock__picture {
+  width: 8rem;
+  height: 8rem;
+  border: 2px solid red;
+  border-radius: 5rem;
+  margin: 1rem;
+}
+.profileBlock__picture--img {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+.profileBlock__imgLarge {
+  margin: 1rem;
+  border: 2px solid blue;
+  width: 30rem;
+  height: 12rem;
+}
+.profileBlock__imgLarge--pic {
+  width: 100%;
+  height: auto;
+  max-height: 12rem;
+  object-fit: cover;
+}
+
+.profileBlock__user--name {
+  text-align: center;
+}
+
+.climbCard {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  border: 2px solid black;
+  margin: 1rem;
+  padding: 0.5rem;
+  border-radius: 1rem;
+  cursor: pointer;
+}
+
+.climbCard--shadow {
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+  transition: all 0.15s cubic-bezier(.25,.8,.25,1);
+}
+
+.climbCard--shadow:hover {
+  box-shadow: 0 14px 28px rgba(0,0,0,0.25), 0 10px 10px rgba(0,0,0,0.22);
+}
+.climbCard--shadow:active {
+  box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
+}
+
+
+
+.climbCard--positionOne {
+  order: 1;
+  width: 53%;
+}
+
+
+.climbCard__pictureBox {
+  order: 2;
+  width: 38%;
+  min-width: 20rem;
+  /*
+  max-height: 26rem;
+  width: 20rem;
+  */
+  border: 2px solid green;
+  margin: 0 auto;
+}
+
+.climbCard__pictureBox--pic {
+  width: 100%;
+  height: auto;
+  object-fit: cover;
+}
+
+.climbCard__title {
+  font-size: 2.2rem;
+  padding: 0rem 1rem;
+  font-weight: bold;
+  margin: 0.3rem;
+}
+.climbCard__title a {
+  color: black;
+  text-decoration: none;
+}
+
+.climbCard__detail {
+  font-size: 1.2rem;
+  padding: 0rem 1rem;
+  margin: 0rem;
+}
+
+.climbCard__desc {
+  font-size: 1rem;
+  padding: 1rem;
+  text-overflow: ellipsis;
+  line-height: 1.7rem;
+  max-height: 5rem;
+  white-space: nowrap;
+  overflow: hidden;
+  line-height: var(--lh);
+}
+
+.climbCard__desc--overflow {
+  --max-lines: 3;
+  position: relative;
+  max-height: calc((1rem) * var(--max-lines));
+  overflow: hidden;
+  padding-right: 1rem; /* space for ellipsis */
+  text-overflow: ellipsis;
+}
+
+
+
+@media (max-device-width: 750px) {
+  .climbCard--smallOne {
+    order: 1;
+  }
+  .climbCard--smallTwo {
+    order: 2;
+  }
+  .climbCard--smallThree {
+    order: 3;
+  }
+}
+
+
