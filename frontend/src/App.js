@@ -20,6 +20,7 @@ function App() {
           <Route exact path='/' component={Index} />
           <Route exact path='/profile/' component={Profile} />
           <Route exact path='/climbs/' component={Climbs} />
+          <Route exact path='/climbDetail/' component={ClimbDetail} />
     </Switch>
     </div>
   );
