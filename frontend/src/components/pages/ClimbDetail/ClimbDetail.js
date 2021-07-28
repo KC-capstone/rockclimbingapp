@@ -9,17 +9,17 @@ function ClimbDetail() {
     <Nav />
         <div className="profileBlock profileBlock--spaceBetween">
             <div className="climbDetailOverview__img">
-                <img src={defaultProfile} />
+                <img src={defaultProfile} alt="climber-stick-figure"/>
             </div>
             <div className="climbDetailOverview__title">
                 <h1>Brooklyn Boulders, Partner Climb</h1>
             </div>
             <div className="climbDetailOverview__rating">
-                <img className="climbDetailOverview__rating--icon" src={starFilled} />
-                <img className="climbDetailOverview__rating--icon" src={starFilled} />
-                <img className="climbDetailOverview__rating--icon" src={starFilled} />
-                <img className="climbDetailOverview__rating--icon" src={starFilled} />
-                <img className="climbDetailOverview__rating--icon" src={starFilled} />
+                <img className="climbDetailOverview__rating--icon" src={starFilled} alt="star-icon-filled"/>
+                <img className="climbDetailOverview__rating--icon" src={starFilled} alt="star-icon-filled"/>
+                <img className="climbDetailOverview__rating--icon" src={starFilled} alt="star-icon-filled"/>
+                <img className="climbDetailOverview__rating--icon" src={starFilled} alt="star-icon-filled"/>
+                <img className="climbDetailOverview__rating--icon" src={starFilled} alt="star-icon-filled"/>
             </div>
             <div>
                 <p className="climbDetailOverview__difficulty">Rating: V2</p>
@@ -36,7 +36,7 @@ function ClimbDetail() {
             <p className="climbDetailOverview__desc">Absolutely loved this! I'd never heard of this before, but they set up a climd that could only be completed with two people! The first pat of the climb wasn't unusual, but then you reach a point where you can't continue without one partner helping the other. We finished it by having one person grab the other's leg and lifting themselves up. Both partners have to top out to complete the climb. Hope they do this again next year!</p>
         </div>
         <div className="climbDetailOverview__youTube">
-            <iframe width="420" height="315"
+            <iframe width="420" height="315" title="muppets=bohemian-rhapsody-youtube"
             src="https://www.youtube.com/embed/tgbNymZ7vqY">
             </iframe>
         </div>

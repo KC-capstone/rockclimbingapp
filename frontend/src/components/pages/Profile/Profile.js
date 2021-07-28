@@ -14,13 +14,13 @@ function Profile() {
     <div className="profileBlock profileBlock--center">
         <div className="profileBlock__user">
             <div className="profileBlock__picture">
-                <img className="profileBlock__picture--img" src={defaultProfile}/>
+                <img className="profileBlock__picture--img" src={defaultProfile} alt="climber-stick-figure"/>
             </div>
             <h4 className="profileBlock__user--name">Greg P</h4>
         </div>
         
         <div className="profileBlock__imgLarge">
-            <img className="profileBlock__imgLarge--pic" src={profileBackground}/>
+            <img className="profileBlock__imgLarge--pic" src={profileBackground} alt="mountain-range"/>
         </div>
     </div>
     <div className="profileBlock profileBlock--spaceAround">

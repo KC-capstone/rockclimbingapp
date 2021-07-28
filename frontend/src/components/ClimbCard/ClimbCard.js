@@ -37,7 +37,7 @@ function ClimbCard(props) {
           </div>
       </div>
       <div className="climbCard__pictureBox climbCard--smallTwo">
-          <img className="climbCard__pictureBox--pic" src={exampleClimb} />       
+          <img className="climbCard__pictureBox--pic" alt="rock-climbing-wall" src={exampleClimb} />       
       </div>
     </div>
     </Link>

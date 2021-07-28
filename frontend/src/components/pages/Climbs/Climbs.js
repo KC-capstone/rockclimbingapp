@@ -1,5 +1,4 @@
 import React from 'react';
-import exampleClimb from '../../../assets/exampleClimb.jpg';
 import Nav from '../../Nav/Nav.js';
 import ClimbCard from '../../ClimbCard/ClimbCard.js';
 

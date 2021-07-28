@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link, Switch, Route } from 'react-router-dom';
+import { Switch, Route } from 'react-router-dom';
 import './App.css';
 import Index from './components/pages/Index/Index.js';
 import Profile from './components/pages/Profile/Profile.js';
