@@ -1,5 +1,6 @@
 import React from 'react';
 import './styles.css';
+import './profile.css';
 import defaultProfile from '../../../assets/profileDefault.png';
 import profileBackground from '../../../assets/profileBackground.jpg';
 import ClimbCard from '../../ClimbCard/ClimbCard.js';

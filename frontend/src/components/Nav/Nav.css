@@ -1,0 +1,42 @@
+.nav {
+    display: flex;
+    margin: 0.5rem;
+  }
+  
+  .nav__link {
+    width: 30%;
+    max-width: 12rem;
+    margin: auto;
+    background-color: var(--red-icon);
+    border: 2px solid black;
+    color: black;
+    border-radius: 0.7rem;
+    font-size: 1.4rem;
+    text-align: center;
+    text-decoration: none;
+    transition: border-radius .15s;
+  }
+  .nav__link:hover {
+    border-radius: 1rem;
+  }
+  
+  .nav__link--logActivity {
+    background-color: var(--green-button);
+    color: var(--green-button-text);
+    border-radius: 5rem;
+    width: 3rem;
+    height: 3rem;
+  }
+  
+  .nav__link--centerContainer {
+    position: relative;
+    height: 3rem;
+  }
+  
+  .nav__link--center {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+  }
+  

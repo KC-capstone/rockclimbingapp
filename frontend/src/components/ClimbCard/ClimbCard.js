@@ -4,21 +4,6 @@ import { Link } from 'react-router-dom';
 import exampleClimb from '../../assets/exampleClimb.jpg';
 
 function ClimbCard(props) {
-/*
-  const card = document.querySelector(".climbCard")
-  const cardLink = document.querySelector(".cardLink")
-  
-  card.addEventListener("click", handleClick)
-  
-  function handleClick(event) {
-  
-    const isTextSelected = window.getSelection().toString();
-    if (!isTextSelected) {
-      cardLink.click();
-    }
-  }
-*/
-
 
   return (
     <Link to="/climbDetail" className="climbCard--defaultStyling">

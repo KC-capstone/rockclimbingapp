@@ -1,6 +1,7 @@
 import React from 'react';
 import Nav from '../../Nav/Nav.js';
 import ClimbCard from '../../ClimbCard/ClimbCard.js';
+import './Climbs.css';
 
 function Climbs() {
   return (

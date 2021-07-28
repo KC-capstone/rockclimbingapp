@@ -1,0 +1,61 @@
+.profileBlock {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  border: 2px solid black;
+  max-width: 90%;
+  margin: auto;
+}
+
+.profileBlock--center {
+  justify-content: center;
+}
+.profileBlock--spaceAround {
+  justify-content: space-around;
+}
+.profileBlock--spaceBetween {
+  justify-content: space-around;
+}
+
+.profileBlock__statOverview {
+  text-align: center;
+}
+
+.profileBlock__statOverview--num {
+  font-size: 3rem;
+  margin: 1rem;
+}
+.profileBlock__statOverview--text {
+  font-size: 1rem;
+  margin: 1rem;
+}
+
+.profileBlock__picture {
+  width: 8rem;
+  height: 8rem;
+  border: 2px solid red;
+  border-radius: 5rem;
+  margin: 1rem;
+}
+.profileBlock__picture--img {
+  margin-left: auto;
+  margin-right: auto;
+}
+
+
+.profileBlock__imgLarge {
+  margin: 1rem;
+  border: 2px solid blue;
+  width: 30rem;
+  height: 12rem;
+}
+.profileBlock__imgLarge--pic {
+  width: 100%;
+  height: auto;
+  max-height: 12rem;
+  object-fit: cover;
+}
+
+.profileBlock__user--name {
+  text-align: center;
+}

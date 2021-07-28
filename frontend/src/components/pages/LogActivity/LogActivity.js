@@ -1,7 +1,7 @@
 import React from 'react';
 import Nav from '../../Nav/Nav.js';
 import { Link } from 'react-router-dom';
-
+import './LogActivity.css';
 
 function LogActivity() {
   return (

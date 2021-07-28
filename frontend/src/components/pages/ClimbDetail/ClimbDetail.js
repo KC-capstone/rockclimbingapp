@@ -2,6 +2,7 @@ import React from 'react';
 import defaultProfile from '../../../assets/profileDefault.png';
 import starFilled from '../../../assets/starFilled.png';
 import Nav from '../../Nav/Nav.js';
+import './ClimbDetail.css';
 
 function ClimbDetail() {
   return (
