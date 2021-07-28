@@ -4,11 +4,28 @@ import { Link } from 'react-router-dom';
 import exampleClimb from '../../assets/exampleClimb.jpg';
 
 function ClimbCard(props) {
+/*
+  const card = document.querySelector(".climbCard")
+  const cardLink = document.querySelector(".cardLink")
+  
+  card.addEventListener("click", handleClick)
+  
+  function handleClick(event) {
+  
+    const isTextSelected = window.getSelection().toString();
+    if (!isTextSelected) {
+      cardLink.click();
+    }
+  }
+*/
+
+
   return (
+    <Link to="/climbDetail" className="climbCard--defaultStyling">
     <div className="climbCard climbCard--shadow profileBlock--center">
       <div className="climbCard--positionOne">
           <div className=".climbCard--smallOne">
-              <p className="climbCard__title"><Link className="cardLink" to="./climbDetail">Brooklyn Boulders, Partner Climb</Link></p>
+              <p className="climbCard__title">Brooklyn Boulders, Partner Climb</p>
           </div>
           <div className="climbCard--smallThree">
               <p className="climbCard__detail">Date: Feb 14, 2019</p>
@@ -23,6 +40,7 @@ function ClimbCard(props) {
           <img className="climbCard__pictureBox--pic" src={exampleClimb} />       
       </div>
     </div>
+    </Link>
   );
 }
 

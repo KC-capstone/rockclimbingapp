@@ -449,7 +449,10 @@ input {
 .climbCard--shadow:active {
   box-shadow: 0 1px 3px rgba(0,0,0,0.12), 0 1px 2px rgba(0,0,0,0.24);
 }
-
+.climbCard--defaultStyling {
+  text-decoration: none;
+  color: black;
+}
 
 
 .climbCard--positionOne {
