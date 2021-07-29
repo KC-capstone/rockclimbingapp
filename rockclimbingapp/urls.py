@@ -34,6 +34,6 @@ if settings.DEBUG:
         import debug_toolbar
         urlpatterns = [path("__debug__/", include(debug_toolbar.urls))] + urlpatterns
 from django.urls import re_path
-from app.core import views
+from apps.core import views
 urlpatterns += [re_path(r'.*', views.react_app)]
 
