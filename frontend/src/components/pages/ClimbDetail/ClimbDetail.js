@@ -32,7 +32,7 @@ function ClimbDetail() {
                 <p>Feb 14, 2019</p>
             </div>
         </div>
-    <div class='pageCenter'>
+    <div className='pageCenter'>
         <div className="profileBlock profileBlock--spaceBetween">
             <p className="climbDetailOverview__desc">Absolutely loved this! I'd never heard of this before, but they set up a climd that could only be completed with two people! The first pat of the climb wasn't unusual, but then you reach a point where you can't continue without one partner helping the other. We finished it by having one person grab the other's leg and lifting themselves up. Both partners have to top out to complete the climb. Hope they do this again next year!</p>
         </div>

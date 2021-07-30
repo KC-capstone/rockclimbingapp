@@ -6,36 +6,36 @@ import './Climbs.css';
 function Climbs() {
   return (
       <div>
-    <div class="pageCenter">
+    <div className="pageCenter">
     <Nav />
-    <div class="searchContainer">
-        <div class="searchBar">   
+    <div className="searchContainer">
+        <div className="searchBar">   
 
-            <div class="searchCity">
-                <input type="text" class="searchCityin" placeholder="Gym Name" />
+            <div className="searchCity">
+                <input type="text" className="searchCityin" placeholder="Gym Name" />
             </div>
-            <div class="searchDivider">
+            <div className="searchDivider">
             </div>
-            <div class="searchRestaurant">
-                <input type="text" class="searchRestaurantIn" placeholder="Date Range" />
+            <div className="searchRestaurant">
+                <input type="text" className="searchRestaurantIn" placeholder="Date Range" />
             </div>
-            <div class="searchDivider">
+            <div className="searchDivider">
             </div>
-            <div class="searchRestaurant">
-                <input type="text" class="searchRestaurantIn" placeholder="Difficulty" />
+            <div className="searchRestaurant">
+                <input type="text" className="searchRestaurantIn" placeholder="Difficulty" />
             </div>
         </div>
 
     </div>
-    <div class='pageCenter'>
+    <div className="pageCenter">
         <ClimbCard />
         <ClimbCard />
         <ClimbCard />
-        <div class="center">
-            <div class="pagination">
+        <div className="center">
+            <div className="pagination">
             <a href="#">&laquo;</a>
             <a href="#">1</a>
-            <a href="#" class="active">2</a>
+            <a href="#" className="active">2</a>
             <a href="#">3</a>
             <a href="#">4</a>
             <a href="#">5</a>

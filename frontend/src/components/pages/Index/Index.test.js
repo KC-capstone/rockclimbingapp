@@ -1,17 +1,19 @@
-// import { render, screen } from '@testing-library/react';
-import App from './App';
 import React from 'react';
 import ReactDOM from 'react-dom';
 import { act } from 'react-dom/test-utils';
+import Index from './Index';
 import { BrowserRouter as Router } from 'react-router-dom';
-/*
-test('renders learn react link', () => {
-  render(<App />);
-  const linkElement = screen.getByText(/learn react/i);
-  expect(linkElement).toBeInTheDocument();
-});
-*/
 
+const exampleData = {
+
+};
+
+
+
+// A "helper function" which renders the given element in a temporary div,
+// and returns the resulting DOM node. This is a helper function written by
+// us, so it does not come standard with React or Jest, but it is a common
+// pattern you'll see when writing React tests.
 function render(reactComponent) {
   const div = document.createElement('div');
   document.body.appendChild(div);
@@ -26,7 +28,7 @@ function render(reactComponent) {
 test('renders succesfully', () => {
   const elem = render(
     <Router>
-      <App />
+      <Index />
     </Router>
   );
 
