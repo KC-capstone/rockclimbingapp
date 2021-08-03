@@ -1,0 +1,43 @@
+.climbDetailOverview__img {
+    border: 2px solid red;   
+    max-width: 8rem;
+    max-height: 8rem;
+    display: inline-block;
+    border-radius: 5rem;
+}
+.climbDetailOverview__title {
+    border: 2px solid green;
+    max-width: 25rem;
+    display: inline-block;
+    font-size: .8rem;
+}
+.climbDetailOverview__rating {
+    border: 2px solid orange;
+    width: 12rem;
+    max-height: 2rem;
+}
+.climbDetailOverview__rating--icon {
+    display: inline;
+    width: 2rem;
+}
+.climbDetailOverview__difficulty {
+    font-size: 1.5rem;
+}
+.climbDetailOverview__date {
+    font-size: 1rem;
+}
+.climbDetailOverview__desc {
+    padding: 1rem;
+}
+.climbDetailOverview__youTube {
+    display: flex;
+    justify-content: space-around;
+    border: 2px solid pink;  
+}
+.climbDetailOverview__imageCarousel {
+    border: 2px solid green;
+    max-width: 25rem;
+    font-size: .8rem;
+    display: flex;
+    justify-content: center;
+}

@@ -1,0 +1,20 @@
+:root {
+    --green-button: hsl(150, 67.1%, 27.5%);
+    --green-button-text: hsl(0, 0%, 90.6%);
+    --red-icon: hsl(349.8, 100%, 33.3%);
+    --black-button: hsl(349.1, 7.7%, 28%);
+    --main-bg-color: coral;
+    --searchButton-bg-color:#C32F10;
+    --gray-color:rgb(2, 207, 207);
+  }
+body {
+    margin-left: 0px;
+    margin-right: 0px;
+    background: url(../../../assets/rockywall.png) repeat 0 0;
+    font-family: 'Red Hat Text', sans-serif;
+}
+.pageCenter {
+    max-width: 956px;
+    margin: auto;
+}
+
