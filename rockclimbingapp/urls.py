@@ -37,3 +37,9 @@ from django.urls import re_path
 from apps.core import views
 urlpatterns += [re_path(r'.*', views.react_app)]
 
+
+# From kickstart-starter instructions to add if we want to use React Router
+
+# from django.urls import re_path
+# from app.core import views
+# urlpatterns += [re_path(r'.*', views.react_app)] 

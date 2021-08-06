@@ -26,3 +26,13 @@ Some notes:
 * When deploying to production, make sure that the `build/` directory gets
   included in Git (remove it from .gitignore in the root directory and the
   `frontend/` directory if it happens to be in either)
+
+8/6 Notes:
+
+Connected to Heroku app as 'arete-climbing-app'
+- To access SQL DB from CLI: <code>heroku pg:psql</code>
+- To run migrations on remote DB: <code>heroku run python manage.py migrate</code>
+Began psuedocode for models and modelForms
+
+Also did we do something to settings.py file?
+
