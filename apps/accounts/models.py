@@ -22,3 +22,19 @@ class User(AbstractUser):
 
         return GRAVATAR_URL % (digest, size_str)
 
+
+#POTENTIAL ATTRIBUTES
+
+# user profile picture
+
+# user banner image
+
+# user activity in last month
+
+# user completed routes
+
+# user toughest route
+
+# user top climb - connect to a climb in the other database 1 to 1
+
+# user relation to posts (aka climbs)

@@ -1,7 +1,7 @@
 import React from 'react';
 import './Nav.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPlusSquare } from '@fortawesome/free-solid-svg-icons'
+import { faPlusSquare } from '@fortawesome/free-solid-svg-icons/faPlusSquare.js'
 import { Link } from 'react-router-dom';
 
 function Nav(props) {
