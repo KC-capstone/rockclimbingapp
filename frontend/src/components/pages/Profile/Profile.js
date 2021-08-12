@@ -1,4 +1,5 @@
 import React from 'react';
+import {useEffect} from 'react';
 import './styles.css';
 import './profile.css';
 import defaultProfile from '../../../assets/profileDefault.png';
@@ -7,6 +8,18 @@ import ClimbCard from '../../ClimbCard/ClimbCard.js';
 import Nav from '../../Nav/Nav.js';
 
 function Profile() {
+  
+    function getData() {
+        console.log('get data function called')
+        fetch('/api/just/testing/')
+          .then(response => response.json())
+          .then(data => {
+            console.log('Got data from Django!');
+            console.log(data);
+          });
+      }
+      useEffect(getData, []);
+  
   return (
     <div className="pageCenter">
     <Nav />

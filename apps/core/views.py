@@ -1,5 +1,6 @@
 from django.shortcuts import render
 
+
 # Two example views. Change or delete as necessary.
 def home(request):
 
@@ -22,3 +23,11 @@ from django.http import HttpResponse
 def react_app(request):
     index_contents = open('./frontend/build/index.html').read()
     return HttpResponse(index_contents)
+
+
+# Greg: attempting server setup
+from django.http import JsonResponse
+def example_api_view(request):
+    return JsonResponse({
+        'testing': 'Does this work?'
+    })
