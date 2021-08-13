@@ -7,4 +7,5 @@ urlpatterns = [
     path('about/', views.about, name='about'),
     path('profile/', views.react_app, name='profile'), # added to connect Django app to React app
     path('api/just/testing/', views.example_api_view),
+    path('logactivity/', views.log_activity),
 ]

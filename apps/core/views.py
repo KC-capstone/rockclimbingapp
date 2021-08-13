@@ -31,3 +31,9 @@ def example_api_view(request):
     return JsonResponse({
         'testing': 'Does this work?'
     })
+
+
+
+def log_activity(request):
+    print('----view: log_activity')
+    print(request)
