@@ -4,18 +4,20 @@ import { Link } from 'react-router-dom';
 import axios  from 'axios';
 import './LogActivity.css';
 
+
+
 function LogActivity() {
 
-    const [title, setTitle] = useState(['Rock Climb']);
-    const [rating, setRating] = useState(['']);
-    const [routeType, setRouteType] = useState(['Bouldering']);
-    const [description, setDescription] = useState([]);
-    const [date, setDate] = useState([]);
-    const [location, setLocation] = useState([]);
-    const [climbsCompleted, setClimbsCompleted] = useState([]);
-    const [toughestRouteCompleted, setToughestRouteCompleted] = useState([]);
-    const [imageLink, setImageLink] = useState([]);
-    const [youtubeLink, setYoutubeLink] = useState([]);
+    const [title, setTitle] = useState('Rock Climb');
+    const [rating, setRating] = useState();
+    const [routeType, setRouteType] = useState('Bouldering');
+    const [description, setDescription] = useState('');
+    const [date, setDate] = useState('');
+    const [location, setLocation] = useState('');
+    const [climbsCompleted, setClimbsCompleted] = useState('');
+    const [toughestRouteCompleted, setToughestRouteCompleted] = useState('');
+    const [imageLink, setImageLink] = useState('');
+    const [youtubeLink, setYoutubeLink] = useState('');
 
     const routeTypeOptions = [
         'Bouldering',
@@ -26,21 +28,39 @@ function LogActivity() {
         'Outdoor Lead Climb',
     ];
     const routeRatings = ['VB', 'V1', 'V2', 'V3', 'V4', 'V5', 'V6', 'V7', 'V8+',];
-    
+
+// My gosh, I hope I can figure out this CSRF thing.
+
+
 
 function logActivity() {
     console.log('function: logActivity')
-    let activityPost = {
+    
+    axios.defaults.xsrfCookieName = 'csrftoken'
+    axios.defaults.xsrfHeaderName = 'X-CSRFToken'
+    axios.defaults.headers.common = {
+        "Content-Type": "application/json"
+      }
+      
+    let activityPost = JSON.stringify({
         "title": title,
         "rating": rating,
-    }
-    axios.post(`/logactivity/`, activityPost)
-    .then(function (response) {
-        console.log(response);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
+        "routeType": routeType,
+        "description": description,
+        "date": date,
+        "location": location,
+        "climbsCompleted": climbsCompleted,
+        "toughestRouteCompleted": toughestRouteCompleted,
+        "imageLink": imageLink,
+        "youtubeLink": youtubeLink,
+    });
+    
+    axios.post('/logactivity/', activityPost, {
+        headers: {
+            'Content-Type': 'application/json'
+        }
+      } )
+        
 }
 
 

@@ -32,6 +32,7 @@ LOCAL_APPS = [
 
 THIRD_PARTY_APPS = [
     'bootstrap4',
+    'rest_framework',
 ]
 
 DJANGO_APPS = [
