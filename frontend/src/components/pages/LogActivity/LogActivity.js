@@ -54,12 +54,13 @@ function logActivity() {
         "imageLink": imageLink,
         "youtubeLink": youtubeLink,
     });
+    console.log(activityPost);
     
-    axios.post('/logactivity/', activityPost, {
+    axios.post('/logactivity', activityPost/*, {
         headers: {
             'Content-Type': 'application/json'
         }
-      } )
+      } */)
         
 }
 
@@ -151,7 +152,7 @@ function logActivity() {
                 
             </div>
             <div className="logActivityForm__rows--spacing">
-                <button className="buttonSubmit buttonSubmit__green" onClick={logActivity} >Eat it</button>
+                <button className="buttonSubmit buttonSubmit__green" onClick={logActivity} >Save</button>
                 <Link to="./profile">
                     <button className="buttonSubmit buttonSubmit__black">Cancel</button>
                 </Link>
