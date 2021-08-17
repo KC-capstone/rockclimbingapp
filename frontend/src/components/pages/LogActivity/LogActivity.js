@@ -41,6 +41,7 @@ function logActivity() {
     axios.defaults.headers.common = {
         "Content-Type": "application/json"
       }
+
       
     let activityPost = JSON.stringify({
         "title": title,
@@ -55,13 +56,25 @@ function logActivity() {
         "youtubeLink": youtubeLink,
     });
     console.log(activityPost);
-    
-    axios.post('/logactivity', activityPost/*, {
+    let config = {
+        url: '/logactivity',
+        method: 'post',
         headers: {
             'Content-Type': 'application/json'
         }
-      } */)
+      }
+    
+    axios.post('/logactivity', activityPost, config)
         
+
+
+      //axios.post('/logactivity', activityPost, config)
+
+
+
+
+
+      
 }
 
 

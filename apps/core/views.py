@@ -1,9 +1,11 @@
 from django.shortcuts import render, redirect
+import json
 from rest_framework import viewsets
 from .serializers import ActivitySerializer, UserSerializer
 from .models import Activity
 from apps.core.forms import AddActivity
 from apps.accounts.models import User
+
 
 # Two example views. Change or delete as necessary.
 def home(request):
@@ -41,16 +43,23 @@ def example_api_view(request):
 def log_activity(request):
     print('----view: log_activity')
     print(request.POST)
-    new_activity = AddActivity().save(commit=False)
-    new_activity.user = request.user
-    #print(request.POST[0])
+    #new_activity = AddActivity().save(commit=False)
+    #new_activity.user = request.user
+    # print(request.POST['title'])
     # new_activity.save()
+    data=json.loads(request.body)
+    print(data)
+    #return HttpResponse('')
+
+
+
     
     return redirect('/profile')
 
 
 
 ### Attempt at API
+
 class ActivityViewSet(viewsets.ModelViewSet):
     queryset = Activity.objects.all()
     serializer_class = ActivitySerializer
