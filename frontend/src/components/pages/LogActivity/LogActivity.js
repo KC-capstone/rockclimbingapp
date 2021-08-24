@@ -162,6 +162,8 @@ function LogActivity() {
                     </div>
                     
                 </div>
+                
+                {/* create a field that contains the user data? */}
 
                 <div className="logActivityForm__rows--spacing">
                     <button className="buttonSubmit buttonSubmit__green" onClick={logActivity} >

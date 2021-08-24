@@ -39,8 +39,64 @@ def example_api_view(request):
     })
 
 
-
 def log_activity(request):
+    #this iterator is just to make visual space in terminal for testing
+    i = 0
+    while i < 5:
+        print(" ")
+        i += 1
+
+    #form submission processing happens here    
+    print('----view: log_activity')
+    print(request.body)
+    activitySubmission=json.loads(request.body)
+    print('heres the activity submission:', activitySubmission)
+    print('Submission title: ', activitySubmission['title'])
+
+    entered_user = request['user']
+    print('entered user: ', entered_user)
+    entered_title = activitySubmission['title']
+    entered_rating = activitySubmission['rating']
+    entered_route_type = activitySubmission['routeType']
+    entered_description = activitySubmission['description'] #bouldering
+    entered_date = activitySubmission['date']
+    entered_location = activitySubmission['location']
+    entered_climbs_completed = activitySubmission['climbsCompleted']
+    entered_toughest_route_completed = activitySubmission['toughestRouteCompleted']
+    entered_image = activitySubmission['imageLink']
+    entered_youtube_link = activitySubmission['youtubeLink']
+
+    print(entered_title)
+
+    #trying to plug in data from request into model
+    ### HERES THE ISSUES -- what is the proper way to instantiate the model?
+    submission = Activity.objects.create(
+        #user = entered_user,
+        title = entered_title,
+        rating = entered_rating,
+        route_type = entered_route_type,
+        description = entered_description,
+        date = entered_date,
+        location = entered_location,
+        climbs_completed = entered_climbs_completed,
+        toughest_route_completed = entered_toughest_route_completed,
+        image = entered_image,
+        youtube_link = entered_youtube_link,
+    )
+
+    print(submission)
+
+    #new_activity = Activity().save()
+    #new_activity.user = request.user
+    #print(request.POST['title'])
+    submission.save()
+
+    return HttpResponse('')
+    #return HttpResponseRedirect("/profile")
+
+
+
+def log_activity_greg(request):
     print('----view: log_activity')
     activitySubmission = request
     print(activitySubmission)
@@ -52,59 +108,8 @@ def log_activity(request):
     print(data)
     return HttpResponse('')
 
+    #return redirect('/profile')
 
-
-    
-    return redirect('/profile')
-
-# Nick: trying to CRUD data using FORMS, don't need to worry about this
-
-def add_activity(request):
-    if request.method == 'POST':
-        form = AddActivity(request.POST)
-        # print("form: ", form)
-        print("request.POST: ", request.POST)
-        print("form.cleaned_data: ", form.cleaned_data)
-
-        if form.is_valid:
-            #entered_user = form.cleaned_data['user']
-            entered_title = form.cleaned_data['title']
-            entered_rating = form.cleaned_data['rating']
-            entered_route_type = form.cleaned_data['route_type']
-            entered_description = form.cleaned_data['description']
-            entered_date = form.cleaned_data['date']
-            entered_location = form.cleaned_data['location']
-            entered_climbs_completed = form.cleaned_data['climbs_completed']
-            entered_toughest_route_completed = form.cleaned_data['toughest_route_completed']
-            entered_image = form.cleaned_data['image']
-            entered_youtube_link = form.cleaned_data['youtube_link']
-            entered_created = form.cleaned_data['created']
-            entered_lastModified = form.cleaned_data['lastModified']
-            entered_removedDate = form.cleaned_data['removedDate']
-
-            Activity.objects.create(
-                #user = entered_user,
-                title = entered_title,
-                rating = entered_rating,
-                route_type = entered_route_type,
-                description = entered_description,
-                date = entered_date,
-                location = entered_location,
-                climbs_completed = entered_climbs_completed,
-                toughest_route_completed = entered_toughest_route_completed,
-                image = entered_image,
-                youtube_link = entered_youtube_link,
-                created = entered_created,
-                lastModified = entered_lastModified,
-                removedDate = entered_removedDate,
-            )
-
-            return HttpResponseRedirect("/profile")
-
-    else:
-        form = Activity()
-
-    return render(request, '', {'form': form})
 
 ### Attempt at API
 

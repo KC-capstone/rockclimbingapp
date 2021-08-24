@@ -30,7 +30,5 @@ Nick 8/20 notes:
   - refactored App.js and components to template nav and pagecenter class to all pages except landing page.
   - generally tidied up
 
-- Questions:
-  - Can you explain the process in views.log_activity? It seems that you were attempting to save an instance of the model based on the inputs in logActivity.js and I'd like to know what the code in that view function means.
-  - In the logActivity.js, why have you laid it out as a collection of DIVs + inputs with state variables and not a form?
-
+Nick 8/23 notes:
+- got database to store submission -- need to connect to user
