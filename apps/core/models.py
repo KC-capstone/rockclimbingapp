@@ -6,8 +6,8 @@ from apps.accounts.models import User
 # Create your models here.
 
 class Activity(models.Model):
-    user = models.ForeignKey(
-        User,
+    user = models.ForeignKey(User,
+        null = True,
         on_delete=models.CASCADE,
     )
     title = models.CharField(max_length=200)

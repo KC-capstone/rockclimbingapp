@@ -31,4 +31,6 @@ Nick 8/20 notes:
   - generally tidied up
 
 Nick 8/23 notes:
-- got database to store submission -- need to connect to user
+- got database to store submission and should be connected to user and accessible through user_id. 
+- Need to add testing/form validation and add more attributes to User model.
+- Let me know if you have issues pulling data for individual users.

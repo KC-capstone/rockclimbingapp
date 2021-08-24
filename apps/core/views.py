@@ -5,6 +5,7 @@ from .serializers import ActivitySerializer, UserSerializer
 from .models import Activity
 from apps.core.forms import AddActivity
 from apps.accounts.models import User
+from django.contrib import messages
 
 
 # Two example views. Change or delete as necessary.
@@ -38,77 +39,42 @@ def example_api_view(request):
         'testing': 'Does this work?'
     })
 
-
+#Called on climb form submission -- creates Activity model and fills with submission data.
 def log_activity(request):
-    #this iterator is just to make visual space in terminal for testing
+    #this iterator is just to make visual space in terminal for testing.
     i = 0
     while i < 5:
         print(" ")
         i += 1
 
-    #form submission processing happens here    
+    # Reassign form data to clear input into instance of Activity model.    
     print('----view: log_activity')
-    print(request.body)
     activitySubmission=json.loads(request.body)
-    print('heres the activity submission:', activitySubmission)
-    print('Submission title: ', activitySubmission['title'])
 
-    entered_user = request['user']
-    print('entered user: ', entered_user)
-    entered_title = activitySubmission['title']
-    entered_rating = activitySubmission['rating']
-    entered_route_type = activitySubmission['routeType']
-    entered_description = activitySubmission['description'] #bouldering
-    entered_date = activitySubmission['date']
-    entered_location = activitySubmission['location']
-    entered_climbs_completed = activitySubmission['climbsCompleted']
-    entered_toughest_route_completed = activitySubmission['toughestRouteCompleted']
-    entered_image = activitySubmission['imageLink']
-    entered_youtube_link = activitySubmission['youtubeLink']
+    print('request.user: ', request.user)
+    print('request.user.id: ', request.user.id)
+    print('Activity submission (AKA request.body):', activitySubmission)
+    print('Check if attribute works properly -- Submission title: ', activitySubmission['title'])
 
-    print(entered_title)
-
-    #trying to plug in data from request into model
-    ### HERES THE ISSUES -- what is the proper way to instantiate the model?
+    # Create instance of activity model and plug in data from form, then save to DB.
     submission = Activity.objects.create(
-        #user = entered_user,
-        title = entered_title,
-        rating = entered_rating,
-        route_type = entered_route_type,
-        description = entered_description,
-        date = entered_date,
-        location = entered_location,
-        climbs_completed = entered_climbs_completed,
-        toughest_route_completed = entered_toughest_route_completed,
-        image = entered_image,
-        youtube_link = entered_youtube_link,
+        user = request.user,
+        title = activitySubmission['title'],
+        rating = activitySubmission['rating'],
+        route_type = activitySubmission['routeType'],
+        description = activitySubmission['description'],
+        date = activitySubmission['date'],
+        location = activitySubmission['location'],
+        climbs_completed = activitySubmission['climbsCompleted'],
+        toughest_route_completed = activitySubmission['toughestRouteCompleted'],
+        image = activitySubmission['imageLink'],
+        youtube_link = activitySubmission['youtubeLink'],
     )
 
-    print(submission)
-
-    #new_activity = Activity().save()
-    #new_activity.user = request.user
-    #print(request.POST['title'])
     submission.save()
-
+    print('Save successful!')
     return HttpResponse('')
     #return HttpResponseRedirect("/profile")
-
-
-
-def log_activity_greg(request):
-    print('----view: log_activity')
-    activitySubmission = request
-    print(activitySubmission)
-    new_activity = Activity().save()
-    new_activity.user = request.user
-    print(request.POST['title'])
-    new_activity.save()
-    data=json.loads(request.body)
-    print(data)
-    return HttpResponse('')
-
-    #return redirect('/profile')
 
 
 ### Attempt at API
