@@ -52,5 +52,5 @@ test('Submit button renders', () => {
     </Router>
   );
 
-  expect((document.querySelector('.buttonSubmit')).textContent).toBe("Submit");
+  expect((document.querySelector('.buttonSubmit')).textContent).toBe("Save");
 });
