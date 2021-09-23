@@ -4,6 +4,22 @@ import starFilled from '../../../assets/starFilled.png';
 import './ClimbDetail.css';
 
 function ClimbDetail() {
+
+    
+
+    let postDetails = {
+        "title": 'Partner Climbing at Brooklyn Boulders',
+        "rating": 3,
+        "routeType": 'Bouldering',
+        "description": 'Placeholder',
+        "date": '2/14/19',
+        "location": 'Placeholder',
+        "climbsCompleted": 'Placeholder',
+        "toughestRouteCompleted": 'Placeholder',
+        "imageLink": 'Placeholder',
+        "youtubeLink": 'Placeholder',
+    }
+    
   return (
     <div>
         <div className="profileBlock profileBlock--spaceBetween">
@@ -11,7 +27,7 @@ function ClimbDetail() {
                 <img src={defaultProfile} alt="climber-stick-figure"/>
             </div>
             <div className="climbDetailOverview__title">
-                <h1>Brooklyn Boulders, Partner Climb</h1>
+                <h1>{postDetails['title']}</h1>
             </div>
             <div className="climbDetailOverview__rating">
                 <img className="climbDetailOverview__rating--icon" src={starFilled} alt="star-icon-filled"/>
@@ -21,18 +37,18 @@ function ClimbDetail() {
                 <img className="climbDetailOverview__rating--icon" src={starFilled} alt="star-icon-filled"/>
             </div>
             <div>
-                <p className="climbDetailOverview__difficulty">Rating: V2</p>
+                <p className="climbDetailOverview__difficulty">{postDetails['toughestRouteCompleted']}</p>
             </div>
             <div>
-                <p className="climbDetailOverview__difficulty">Primary Route type: Bouldering</p>
+                <p className="climbDetailOverview__difficulty">Primary Route type: {postDetails['routeType']}</p>
             </div>
             <div className="climbDetailOverview__date">
-                <p>Feb 14, 2019</p>
+                <p>{postDetails['date']}</p>
             </div>
         </div>
 
         <div className="profileBlock profileBlock--spaceBetween">
-            <p className="climbDetailOverview__desc">Absolutely loved this! I'd never heard of this before, but they set up a climd that could only be completed with two people! The first pat of the climb wasn't unusual, but then you reach a point where you can't continue without one partner helping the other. We finished it by having one person grab the other's leg and lifting themselves up. Both partners have to top out to complete the climb. Hope they do this again next year!</p>
+            <p className="climbDetailOverview__desc">{postDetails['description']}</p>
         </div>
         <div className="climbDetailOverview__youTube">
             <iframe width="420" height="315" title="muppets=bohemian-rhapsody-youtube"
