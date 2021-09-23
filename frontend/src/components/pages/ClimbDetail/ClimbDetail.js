@@ -1,7 +1,6 @@
 import React from 'react';
 import defaultProfile from '../../../assets/profileDefault.png';
 import starFilled from '../../../assets/starFilled.png';
-import Nav from '../../Nav/Nav.js';
 import './ClimbDetail.css';
 
 function ClimbDetail() {
@@ -22,8 +21,7 @@ function ClimbDetail() {
     }
     
   return (
-    <div className="pageCenter">
-    <Nav />
+    <div>
         <div className="profileBlock profileBlock--spaceBetween">
             <div className="climbDetailOverview__img">
                 <img src={defaultProfile} alt="climber-stick-figure"/>
@@ -48,7 +46,7 @@ function ClimbDetail() {
                 <p>{postDetails['date']}</p>
             </div>
         </div>
-    <div className='pageCenter'>
+
         <div className="profileBlock profileBlock--spaceBetween">
             <p className="climbDetailOverview__desc">{postDetails['description']}</p>
         </div>
@@ -57,11 +55,10 @@ function ClimbDetail() {
             src="https://www.youtube.com/embed/tgbNymZ7vqY">
             </iframe>
         </div>
-         <div className="climbDetailOverview__imageCarousel">
-             <p>TBD: i'll add a React-powered image carousel.</p>
-         </div>
+        <div className="climbDetailOverview__imageCarousel">
+            <p>TBD: i'll add a React-powered image carousel.</p>
+        </div>
     </div>
-</div>
   );
 }
 

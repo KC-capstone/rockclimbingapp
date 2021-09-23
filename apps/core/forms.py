@@ -10,7 +10,6 @@ class AddActivity(forms.ModelForm):
     class Meta:
         model = Activity
         fields = ['id',
-        'user',
         'title',
         'rating',
         'route_type',

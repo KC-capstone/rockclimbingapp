@@ -5,62 +5,16 @@ from apps.accounts.models import User
 
 # Create your models here.
 
-# potential models: 
-
-#   routes: 
-#   - 
-#   - 
-#   - 
-#   - 
-#   - 
-#   - 
-#   - 
-#   - 
-#   - 
-#   - 
-#   - 
-#   - 
-#   - 
-
-#   user climbing stats (like separate from standard "account" data):
-#   - 
-#   - 
-#   - 
-#   - 
-#   - 
-#   - 
-#   - 
-#   - 
-#   - 
-#   - 
-#   - 
-
-
-
-
-# potential modelForms: 
-
-#  logging a route 
-#   - title: CharField(max_length=100)
-#   - rating: widget=Select, choices=[make a variable], blank=False, default=1
-#   - route type: needs to be drop down of choices
-#   - description: TextField, max_length=500, empty_value=None
-#   - date: DateField
-#   - # of climbs completed: same as rating
-#   - toughest route completed: like rating but not a clickey one
-#   - uploading a file: FileField?
-#   - yt link: URLField
-
 class Activity(models.Model):
-    user = models.ForeignKey(
-        User,
+    user = models.ForeignKey(User,
+        null = True,
         on_delete=models.CASCADE,
     )
     title = models.CharField(max_length=200)
     rating = models.DecimalField(max_digits=2, decimal_places=1)
-    route_type = models.DateTimeField()
+    route_type = models.CharField(max_length=50)
     description = models.CharField(max_length=200)
-    date = models.DateTimeField()
+    date = models.DateField()
     location = models.CharField(max_length=200)
     climbs_completed = models.PositiveSmallIntegerField()
     toughest_route_completed = models.CharField(max_length=5)

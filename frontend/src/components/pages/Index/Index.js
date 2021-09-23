@@ -12,8 +12,7 @@ function Index() {
             <Link className="button" to="/profile">Log In</Link>
             <Link className="button" to="#">Sign Up</Link>
         </div>
-        
-    </div>
+      </div>
     </div>
   );
 }

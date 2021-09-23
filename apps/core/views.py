@@ -1,10 +1,11 @@
-from django.shortcuts import render, redirect
+from django.shortcuts import render, redirect, HttpResponseRedirect
 import json
 from rest_framework import viewsets
 from .serializers import ActivitySerializer, UserSerializer
 from .models import Activity
 from apps.core.forms import AddActivity
 from apps.accounts.models import User
+from django.contrib import messages
 
 
 # Two example views. Change or delete as necessary.
@@ -38,24 +39,42 @@ def example_api_view(request):
         'testing': 'Does this work?'
     })
 
-
-
+#Called on climb form submission -- creates Activity model and fills with submission data.
 def log_activity(request):
+    #this iterator is just to make visual space in terminal for testing.
+    i = 0
+    while i < 5:
+        print(" ")
+        i += 1
+
+    # Reassign form data to clear input into instance of Activity model.    
     print('----view: log_activity')
-    print(request.POST)
-    #new_activity = AddActivity().save(commit=False)
-    #new_activity.user = request.user
-    # print(request.POST['title'])
-    # new_activity.save()
-    data=json.loads(request.body)
-    print(data)
-    #return HttpResponse('')
+    activitySubmission=json.loads(request.body)
 
+    print('request.user: ', request.user)
+    print('request.user.id: ', request.user.id)
+    print('Activity submission (AKA request.body):', activitySubmission)
+    print('Check if attribute works properly -- Submission title: ', activitySubmission['title'])
 
+    # Create instance of activity model and plug in data from form, then save to DB.
+    submission = Activity.objects.create(
+        user = request.user,
+        title = activitySubmission['title'],
+        rating = activitySubmission['rating'],
+        route_type = activitySubmission['routeType'],
+        description = activitySubmission['description'],
+        date = activitySubmission['date'],
+        location = activitySubmission['location'],
+        climbs_completed = activitySubmission['climbsCompleted'],
+        toughest_route_completed = activitySubmission['toughestRouteCompleted'],
+        image = activitySubmission['imageLink'],
+        youtube_link = activitySubmission['youtubeLink'],
+    )
 
-    
-    return redirect('/profile')
-
+    submission.save()
+    print('Save successful!')
+    return HttpResponse('')
+    #return HttpResponseRedirect("/profile")
 
 
 ### Attempt at API

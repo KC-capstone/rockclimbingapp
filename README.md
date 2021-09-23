@@ -14,8 +14,6 @@ Some notes:
 
 - If we end up using React router, check guide for adding React to Django project section in previousREADME.md --- something about 404? Seems a bit confusing right now.
 
-- Speaking of routing, I'm not quite sure how to make these two different style of routing work together but I imagine we'll have primarily the single page app and then a login/sign up page. I'' try to understand this soon as we go on but if you have an idea let me know.
-
 - Some tips from the end of that section: 
 * To keep on using CRA's (React's) test server during development so you get
   live-reloading, running both Django and node simultaneously. To do this,
@@ -27,12 +25,12 @@ Some notes:
   included in Git (remove it from .gitignore in the root directory and the
   `frontend/` directory if it happens to be in either)
 
-8/6 Notes:
+Nick 8/20 notes:
+- DRYed up some frontend code for clarity and to help me get my bearings:
+  - refactored App.js and components to template nav and pagecenter class to all pages except landing page.
+  - generally tidied up
 
-Connected to Heroku app as 'arete-climbing-app'
-- To access SQL DB from CLI: <code>heroku pg:psql</code>
-- To run migrations on remote DB: <code>heroku run python manage.py migrate</code>
-Began psuedocode for models and modelForms
-
-Also did we do something to settings.py file?
-
+Nick 8/23 notes:
+- got database to store submission and should be connected to user and accessible through user_id. 
+- Need to add testing/form validation and add more attributes to User model.
+- Let me know if you have issues pulling data for individual users.
