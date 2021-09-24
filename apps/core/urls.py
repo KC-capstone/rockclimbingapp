@@ -13,6 +13,7 @@ urlpatterns = [
     path('profile', views.react_app, name='profile'), # added to connect Django app to React app
     #path('api/just/testing/', views.example_api_view),
     path('logactivity', views.log_activity),
+    path('climbdetail', views.climb_detail),
     path('api/', include(router.urls)),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework'))
 ]

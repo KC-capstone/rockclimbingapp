@@ -6,7 +6,7 @@ from .models import Activity
 from apps.core.forms import AddActivity
 from apps.accounts.models import User
 from django.contrib import messages
-
+from django.http import HttpResponse, JsonResponse
 
 # Two example views. Change or delete as necessary.
 def home(request):
@@ -26,14 +26,13 @@ def about(request):
 # This was added per instructions in the django-kcproject-starter README for adding a React App.
 # This is supposed to serve up frontend's index.html in the build directory to "kick things off"?
 
-from django.http import HttpResponse
 def react_app(request):
     index_contents = open('./frontend/build/index.html').read()
     return HttpResponse(index_contents)
 
 
 # Greg: attempting server setup
-from django.http import JsonResponse
+
 def example_api_view(request):
     return JsonResponse({
         'testing': 'Does this work?'
@@ -75,6 +74,30 @@ def log_activity(request):
     print('Save successful!')
     return HttpResponse('')
     #return HttpResponseRedirect("/profile")
+
+def climb_detail(request):
+    print('----view: climb_detail')
+    status = 200
+    data = {}
+    try:
+        activity_data = Activity.objects.get(id=2)
+        print('activity data:', activity_data)
+        data = {
+            "title": activity_data.title,
+            "rating": activity_data.rating,
+            "routeType": activity_data.route_type,
+            "description": activity_data.description,
+            "date": activity_data.date,
+            "location": activity_data.location,
+            "climbsCompleted": activity_data.climbs_completed,
+            "toughestRouteCompleted": activity_data.toughest_route_completed,
+            "imageLink": activity_data.image,
+            "youtubeLink": activity_data.toughest_route_completed,
+            }
+    except:
+        data['message'] = "Activity Not Found"
+        status = 404
+    return JsonResponse(data,status=status)
 
 
 ### Attempt at API

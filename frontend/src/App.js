@@ -16,22 +16,25 @@ function App() {
     <div>
         <Switch>
           <Route exact path='/' component={Index} />
-          <Route exact path='/profile/' component={Profile} />
-          <Route exact path='/climbs/' component={Climbs} />
-          <Route exact path='/climbDetail/' 
-            render={(props) => (
-              <ClimbDetail {...props}
-              DATAVARIABLE1={data}
-              DATAVARIABLE2={data} />
-            )}
-           />
-           <Route exact path='/logActivity/' 
-            render={(props) => (
-              <LogActivity {...props}
-              DATAVARIABLE1={title}
-              DATAVARIABLE2={data} />
-            )}
-           />
+          <div className="pageCenter">
+            <Nav /> 
+            <Route exact path='/profile/' component={Profile} />
+            <Route exact path='/climbs/' component={Climbs} />
+            <Route exact path='/climbDetail/' 
+              render={(props) => (
+                <ClimbDetail {...props}
+                DATAVARIABLE1={data}
+                DATAVARIABLE2={data} />
+              )}
+            />
+            <Route exact path='/logActivity/' 
+              render={(props) => (
+                <LogActivity {...props}
+                DATAVARIABLE1={title}
+                DATAVARIABLE2={data} />
+              )}
+            />
+          </div>
     </Switch>
     </div>
 
