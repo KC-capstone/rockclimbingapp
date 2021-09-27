@@ -75,12 +75,12 @@ def log_activity(request):
     return HttpResponse('')
     #return HttpResponseRedirect("/profile")
 
-def climb_detail(request):
-    print('----view: climb_detail')
+def climb_detail_by_id(request, activity_id):
+    print('----view: climb_detail_by_id')
     status = 200
     data = {}
     try:
-        activity_data = Activity.objects.get(id=2)
+        activity_data = Activity.objects.get(id=activity_id)
         print('activity data:', activity_data)
         data = {
             "title": activity_data.title,
@@ -99,8 +99,33 @@ def climb_detail(request):
         status = 404
     return JsonResponse(data,status=status)
 
+def climb_detail_most_recent(request):
+    print('----view: climb_detail_most_recent')
+    status = 200
+    data = {}
+    #try:
+    print('call data', request.user)
+    activity_data = Activity.objects.filter(user=request.user, removedDate__isnull=True).order_by('-date')[:1]
+    print('activity data:', activity_data)
+    try:
+        data = {
+            "title": activity_data[0].title,
+            "rating": activity_data[0].rating,
+            "routeType": activity_data[0].route_type,
+            "description": activity_data[0].description,
+            "date": activity_data[0].date,
+            "location": activity_data[0].location,
+            "climbsCompleted": activity_data[0].climbs_completed,
+            "toughestRouteCompleted": activity_data[0].toughest_route_completed,
+            "imageLink": activity_data[0].image,
+            "youtubeLink": activity_data[0].toughest_route_completed,
+            "climbID": activity_data[0].id,
+            }
+    except:
+        data['message'] = "Activity Not Found"
+        status = 404
+    return JsonResponse(data,status=status)
 
-### Attempt at API
 
 class ActivityViewSet(viewsets.ModelViewSet):
     queryset = Activity.objects.all()

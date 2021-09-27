@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from 'react';
+import { useParams } from "react-router-dom";
 import axios  from 'axios';
 import defaultProfile from '../../../assets/profileDefault.png';
 import starFilled from '../../../assets/starFilled.png';
@@ -7,44 +8,32 @@ import './ClimbDetail.css';
 function ClimbDetail() {
     
     const [activityData, setActivityData] = useState({
-        "title": 'Title not found',
-        "rating": 3,
-        "routeType": 'Bouldering',
-        "description": 'Placeholder',
-        "date": '2/14/19',
-        "location": 'Placeholder',
-        "climbsCompleted": 'Placeholder',
-        "toughestRouteCompleted": 'Placeholder',
-        "imageLink": 'Placeholder',
-        "youtubeLink": 'Placeholder',
+        "title": '---',
+        "rating": '-',
+        "routeType": '---',
+        "description": '---',
+        "date": '---',
+        "location": '---',
+        "climbsCompleted": '---',
+        "toughestRouteCompleted": '---',
+        "imageLink": '',
+        "youtubeLink": '',
+        "climbID": '',
     });
 
+    const parm = useParams()['id'];
     
-    useEffect(getActivity, [])
+    useEffect(getSpecificActivity, [])
 
-    function getActivity() {
-        console.log('function: getActivity')
+    function getSpecificActivity() {
+        console.log('function: getSpecificActivity')
         
         axios.defaults.xsrfCookieName = 'csrftoken'
         axios.defaults.xsrfHeaderName = 'X-CSRFToken'
         axios.defaults.headers.common = {
             "Content-Type": "application/json"
         }
-        /*
-        let activityPost = JSON.stringify({
-            "title": title,
-            "rating": rating,
-            "routeType": routeType,
-            "description": description,
-            "date": date,
-            "location": location,
-            "climbsCompleted": climbsCompleted,
-            "toughestRouteCompleted": toughestRouteCompleted,
-            "imageLink": imageLink,
-            "youtubeLink": youtubeLink,
-        });
-        */
-        //console.log('activity get:', activityPost);
+
         let config = {
             url: '/climbDetail',
             method: 'get',
@@ -52,8 +41,7 @@ function ClimbDetail() {
                 'Content-Type': 'application/json'
             }
         };
-        
-        fetch('/climbdetail')
+        fetch('/climbdetail/' + parm)
         .then((r) => r.json())
         //.then((data) => console.log(data))
         .then((data) => 

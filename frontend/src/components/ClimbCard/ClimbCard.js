@@ -6,18 +6,18 @@ import exampleClimb from '../../assets/exampleClimb.jpg';
 function ClimbCard(props) {
 
   return (
-    <Link to="/climbDetail" className="climbCard--defaultStyling">
+    <Link to={"/climbDetail/" + props.activityData.climbID} className="climbCard--defaultStyling">
     <div className="climbCard climbCard--shadow profileBlock--center">
       <div className="climbCard--positionOne">
           <div className=".climbCard--smallOne">
-              <p className="climbCard__title">Brooklyn Boulders, Partner Climb</p>
+              <p className="climbCard__title">{props.activityData.title}</p>
           </div>
           <div className="climbCard--smallThree">
-              <p className="climbCard__detail">Date: Feb 14, 2019</p>
-              <p className="climbCard__detail">Climbs: 6</p>
-              <p className="climbCard__detail">Toughest climb: V3</p>
+              <p className="climbCard__detail">Date: {props.activityData.date}</p>
+              <p className="climbCard__detail">Climbs: {props.activityData.climbsCompleted}</p>
+              <p className="climbCard__detail">Toughest climb: {props.activityData.toughestRouteCompleted}</p>
               <div className="climbCard__desc">
-                  <p className="climbCard__desc--overflow">Absolutely loved this! I'd never heard of this before, but they set up a climd that could only be completed with two people! The first pat of the climb wasn't unusual, but then you reach a point where you can't continue without one partner helping the other. We finished it by having one person grab the other's leg and lifting themselves up. Both partners have to top out to complete the climb. Hope they do this again next year!</p>
+                  <p className="climbCard__desc--overflow">{props.activityData.description}</p>
               </div>
           </div>
       </div>

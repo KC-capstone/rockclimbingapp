@@ -1,5 +1,4 @@
-import React from 'react';
-import {useEffect} from 'react';
+import React, { useState, useEffect } from 'react';
 import './styles.css';
 import './profile.css';
 import defaultProfile from '../../../assets/profileDefault.png';
@@ -7,17 +6,46 @@ import profileBackground from '../../../assets/profileBackground.jpg';
 import ClimbCard from '../../ClimbCard/ClimbCard.js';
 
 function Profile() {
-  
-    function getData() {
-        console.log('get data function called')
-        fetch('/api/just/testing/')
-          .then(response => response.json())
-          .then(data => {
-            console.log('Got data from Django!');
-            console.log(data);
-          });
-      }
-      useEffect(getData, []);
+
+    const [activityData, setActivityData] = useState({
+        "title": '---',
+        "rating": '-',
+        "routeType": '---',
+        "description": '---',
+        "date": '---',
+        "location": '---',
+        "climbsCompleted": '---',
+        "toughestRouteCompleted": '---',
+        "imageLink": '',
+        "youtubeLink": '',
+        "climbID": '',
+    });
+
+    useEffect(getClimbDetailMostRecent, []);
+
+    function getClimbDetailMostRecent() {
+        console.log('getClimbDetailMostRecent');
+        fetch('/climb_detail_most_recent')
+        .then(response => response.json())
+        .then(data => {
+        console.log('Got data from Django!');
+        console.log(data);
+        setActivityData({
+            "title": data['title'],
+            "rating": data['rating'],
+            "routeType": data['routeType'],
+            "description": data['description'],
+            "date": data['date'],
+            "location": data['location'],
+            "climbsCompleted": data['climbsCompleted'],
+            "toughestRouteCompleted": data['toughestRouteCompleted'],
+            "imageLink": data['imageLink'],
+            "youtubeLink": data['youtubeLink'],
+            "climbID": data['climbID'],
+        })
+        });
+    }
+      
   
   return (
     <div>
@@ -48,7 +76,9 @@ function Profile() {
             </div>
         </div>
 
-        <ClimbCard />
+        <ClimbCard 
+        activityData={activityData}
+        />
     </div>
   );
 }

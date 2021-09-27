@@ -20,7 +20,7 @@ function App() {
             <Nav /> 
             <Route exact path='/profile/' component={Profile} />
             <Route exact path='/climbs/' component={Climbs} />
-            <Route exact path='/climbDetail/' 
+            <Route exact path='/climbDetail/:id' 
               render={(props) => (
                 <ClimbDetail {...props}
                 DATAVARIABLE1={data}
