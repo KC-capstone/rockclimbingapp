@@ -81,19 +81,7 @@ def climb_detail_by_id(request, activity_id):
     data = {}
     try:
         activity_data = Activity.objects.get(id=activity_id)
-        print('activity data:', activity_data)
-        data = {
-            "title": activity_data.title,
-            "rating": activity_data.rating,
-            "routeType": activity_data.route_type,
-            "description": activity_data.description,
-            "date": activity_data.date,
-            "location": activity_data.location,
-            "climbsCompleted": activity_data.climbs_completed,
-            "toughestRouteCompleted": activity_data.toughest_route_completed,
-            "imageLink": activity_data.image,
-            "youtubeLink": activity_data.toughest_route_completed,
-            }
+        data = create_get_activity_data(activity_data)
     except:
         data['message'] = "Activity Not Found"
         status = 404
@@ -103,12 +91,24 @@ def climb_detail_most_recent(request):
     print('----view: climb_detail_most_recent')
     status = 200
     data = {}
-    #try:
-    print('call data', request.user)
-    activity_data = Activity.objects.filter(user=request.user, removedDate__isnull=True).order_by('-date')[:1]
-    print('activity data:', activity_data)
     try:
+        activity_data = Activity.objects.filter(user=request.user, removedDate__isnull=True).order_by('-date')[:1]
+        print('activity data:', activity_data)
+        activities = {}
+        for activity in activity_data:
+            activities['activity'] = create_get_activity_data(activity)
+        #data = create_filter_activity_data(activity_data)
         data = {
+            'activities': activities,
+        }
+    except:
+        data['message'] = "Activity Not Found"
+        status = 404
+    print('here\'s data', data)
+    return JsonResponse(data,status=status)
+
+def create_filter_activity_data(activity_data):
+    data = {
             "title": activity_data[0].title,
             "rating": activity_data[0].rating,
             "routeType": activity_data[0].route_type,
@@ -121,10 +121,23 @@ def climb_detail_most_recent(request):
             "youtubeLink": activity_data[0].toughest_route_completed,
             "climbID": activity_data[0].id,
             }
-    except:
-        data['message'] = "Activity Not Found"
-        status = 404
-    return JsonResponse(data,status=status)
+    return data
+
+def create_get_activity_data(activity_data):
+    data = {
+            "title": activity_data.title,
+            "rating": activity_data.rating,
+            "routeType": activity_data.route_type,
+            "description": activity_data.description,
+            "date": activity_data.date,
+            "location": activity_data.location,
+            "climbsCompleted": activity_data.climbs_completed,
+            "toughestRouteCompleted": activity_data.toughest_route_completed,
+            "imageLink": activity_data.image,
+            "youtubeLink": activity_data.toughest_route_completed,
+            "climbID": activity_data.id,
+            }
+    return data
 
 
 class ActivityViewSet(viewsets.ModelViewSet):

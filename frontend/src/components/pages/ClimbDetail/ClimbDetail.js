@@ -43,7 +43,6 @@ function ClimbDetail() {
         };
         fetch('/climbdetail/' + parm)
         .then((r) => r.json())
-        //.then((data) => console.log(data))
         .then((data) => 
             setActivityData({
                 "title": data['title'],

@@ -6,7 +6,6 @@ import profileBackground from '../../../assets/profileBackground.jpg';
 import ClimbCard from '../../ClimbCard/ClimbCard.js';
 
 function Profile() {
-
     const [activityData, setActivityData] = useState({
         "title": '---',
         "rating": '-',
@@ -31,17 +30,17 @@ function Profile() {
         console.log('Got data from Django!');
         console.log(data);
         setActivityData({
-            "title": data['title'],
-            "rating": data['rating'],
-            "routeType": data['routeType'],
-            "description": data['description'],
-            "date": data['date'],
-            "location": data['location'],
-            "climbsCompleted": data['climbsCompleted'],
-            "toughestRouteCompleted": data['toughestRouteCompleted'],
-            "imageLink": data['imageLink'],
-            "youtubeLink": data['youtubeLink'],
-            "climbID": data['climbID'],
+            "title": data['activities']['activity']['title'],
+            "rating": data['activities']['activity']['rating'],
+            "routeType": data['activities']['activity']['routeType'],
+            "description": data['activities']['activity']['description'],
+            "date": data['activities']['activity']['date'],
+            "location": data['activities']['activity']['location'],
+            "climbsCompleted": data['activities']['activity']['climbsCompleted'],
+            "toughestRouteCompleted": data['activities']['activity']['toughestRouteCompleted'],
+            "imageLink": data['activities']['activity']['imageLink'],
+            "youtubeLink": data['activities']['activity']['youtubeLink'],
+            "climbID": data['activities']['activity']['climbID'],
         })
         });
     }
