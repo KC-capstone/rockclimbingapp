@@ -15,6 +15,7 @@ urlpatterns = [
     path('logactivity', views.log_activity),
     path('climbdetail/<activity_id>', views.climb_detail_by_id),
     path('climb_detail_most_recent', views.climb_detail_most_recent),
+    path('climb_detail_all_climbs', views.climb_detail_all_climbs),
     path('api/', include(router.urls)),
     path('api-auth/', include('rest_framework.urls', namespace='rest_framework'))
 ]

@@ -97,7 +97,6 @@ def climb_detail_most_recent(request):
         activities = {}
         for activity in activity_data:
             activities['activity'] = create_get_activity_data(activity)
-        #data = create_filter_activity_data(activity_data)
         data = {
             'activities': activities,
         }
@@ -106,6 +105,31 @@ def climb_detail_most_recent(request):
         status = 404
     print('here\'s data', data)
     return JsonResponse(data,status=status)
+
+def climb_detail_all_climbs(request):
+    print('----view: climb_detail_most_recent')
+    status = 200
+    data = {}
+    try:
+        activity_data = Activity.objects.filter(user=request.user, removedDate__isnull=True).order_by('-date')
+        print('activity data:', activity_data)
+        activities = {}
+        activity_ids = []
+        for activity in activity_data:
+            print('-----climbID:', activity.id)
+            activities[str(activity.id)] = create_get_activity_data(activity)
+            activity_ids.append(activity.id)
+        data = {
+            'activities': activities,
+            'activityIDs': activity_ids,
+        }
+    except:
+        data['message'] = "Activity Not Found"
+        status = 404
+    print('here\'s data', data)
+    return JsonResponse(data,status=status)
+
+
 
 def create_filter_activity_data(activity_data):
     data = {
