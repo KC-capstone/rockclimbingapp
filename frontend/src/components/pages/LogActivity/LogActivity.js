@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import axios  from 'axios';
 import './LogActivity.css';
 
@@ -22,6 +22,9 @@ function LogActivity() {
     const [toughestRouteCompleted, setToughestRouteCompleted] = useState('');
     const [imageLink, setImageLink] = useState('');
     const [youtubeLink, setYoutubeLink] = useState('');
+    const [loggedIn, setloggedIn] = useState(false);
+
+
 
     const routeTypeOptions = [
         'Bouldering',
@@ -68,12 +71,24 @@ function LogActivity() {
             }
         };
         
-        axios.post('/logactivity', activityPost, config);
+        axios.post('/logactivity', activityPost, config)
+        .then(function (response) {
+            console.log(response);
+            setloggedIn(true);
+          })
+          .catch(function (error) {
+            console.log('Here\s the error:', error);
+          });
     }
 
 
-    return (
+    return ( 
         <div>
+            {
+                loggedIn ? (
+                    <Redirect to="/profile"/>
+                ) : null
+            }
             <h1>Log your Activity</h1>
             <div className="logActivityForm">
                 <div className="logActivityForm__rows">

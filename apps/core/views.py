@@ -123,6 +123,7 @@ def climb_detail_all_climbs(request):
             'activities': activities,
             'activityIDs': activity_ids,
         }
+        data['message'] = "Successful"
     except:
         data['message'] = "Activity Not Found"
         status = 404
