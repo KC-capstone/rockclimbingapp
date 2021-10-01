@@ -107,27 +107,35 @@ def climb_detail_most_recent(request):
     return JsonResponse(data,status=status)
 
 def climb_detail_all_climbs(request):
-    print('----view: climb_detail_most_recent')
+    print('----view: climb_detail_most_recent', request, request.GET['startPos'])
     status = 200
     data = {}
+    start_position = 0
+    if 'startPos' in request.GET:
+        start_position = int(request.GET['startPos'])
     try:
         activity_data = Activity.objects.filter(user=request.user, removedDate__isnull=True).order_by('-date')
-        print('activity data:', activity_data)
+        #print('activity data:', activity_data)
         activities = {}
         activity_ids = []
-        for activity in activity_data:
-            print('-----climbID:', activity.id)
-            activities[str(activity.id)] = create_get_activity_data(activity)
-            activity_ids.append(activity.id)
+        number_of_activities = len(activity_data)
+        details = {'total_number_of_activities': number_of_activities,}
+        end_position = min(start_position + 3, number_of_activities)
+        print('We\'ve made it this far')
+        for i in range(start_position,end_position):
+            print('-----climbID:', activity_data[i].id)
+            activities[str(activity_data[i].id)] = create_get_activity_data(activity_data[i])
+            activity_ids.append(activity_data[i].id)
         data = {
             'activities': activities,
             'activityIDs': activity_ids,
+            'details': details
         }
         data['message'] = "Successful"
     except:
         data['message'] = "Activity Not Found"
         status = 404
-    print('here\'s data', data)
+    #print('here\'s data', data)
     return JsonResponse(data,status=status)
 
 
