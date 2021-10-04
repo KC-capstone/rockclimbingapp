@@ -111,6 +111,7 @@ def climb_detail_all_climbs(request):
     status = 200
     data = {}
     start_position = 0
+    #breakpoint()
     if 'startPos' in request.GET:
         start_position = int(request.GET['startPos'])
     try:
@@ -121,7 +122,7 @@ def climb_detail_all_climbs(request):
         number_of_activities = len(activity_data)
         details = {'total_number_of_activities': number_of_activities,}
         end_position = min(start_position + 3, number_of_activities)
-        print('We\'ve made it this far')
+        print('We\'ve made it this far', start_position, end_position)
         for i in range(start_position,end_position):
             print('-----climbID:', activity_data[i].id)
             activities[str(activity_data[i].id)] = create_get_activity_data(activity_data[i])

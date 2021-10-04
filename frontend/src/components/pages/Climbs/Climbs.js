@@ -6,15 +6,16 @@ function Climbs() {
 
     const [activityData, setActivityData] = useState([]);
     const [pages, setPages] = useState(1);
-    const [currentPage, setCurrentPages] = useState(1);
+    const [currentPage, setCurrentPage] = useState(1);
     const range = (start, end, length = end - start + 1) =>
     Array.from({ length }, (_, i) => start + i)
     //console.log('Here\s that range example!', range(0,2));
 
     useEffect(getClimbDetailData, []);
 
-    function getClimbDetailData(startPos=0) {
-        console.log('getClimbDetailData');
+    function getClimbDetailData(startPage=1) {
+        console.log('getClimbDetailData', startPage);
+        const startPos = startPage*3 - 3;
         fetch('/climb_detail_all_climbs?startPos=' + startPos)
         .then(response => response.json())
         .then(data => {
@@ -41,8 +42,11 @@ function Climbs() {
         console.log('number of results:', data['details']['total_number_of_activities'], Math.ceil((data['details']['total_number_of_activities'])/3))
         setActivityData(activityRenderData);
         setPages(Math.ceil((data['details']['total_number_of_activities']/3)));
-        console.log('pages:', pages)
-        });
+        //console.log('pages:', pages)
+        document.body.scrollTop = 0; // For Safari
+        document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
+        })
+        //.then();
     }
 
 
@@ -77,11 +81,11 @@ function Climbs() {
         <div id="paginationBar" className="center">
             <div className="pagination">
             
-                <a href="#">&laquo;</a>
+                <span href="#">&laquo;</span>
                 {range(1,pages).map(page => (
-                {...page === currentPage ? <a href="#" className="active">{page}</a> : <a href="#">{page}</a>}
+                {...page === currentPage ? <span className="active" onClick={() => getClimbDetailData(page)}>{page}</span> : <span onClick={() => getClimbDetailData(page)}>{page}</span>}
             ))}
-                <a href="#">&raquo;</a>
+                <span href="#">&raquo;</span>
             </div>
         </div>
 
