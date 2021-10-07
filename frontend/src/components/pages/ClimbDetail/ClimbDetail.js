@@ -38,7 +38,7 @@ function ClimbDetail(props) {
                 <p>{props.activityData['date']}</p>
             </div>
             <div>
-            {props.showEditYN ? <Link to="/logActivity">
+            {props.showEditYN ? <Link to={"/climbDetail/" + parm + "/edit/"}>
                 <div className="climbDetailOverview__editIcon">
                     <FontAwesomeIcon icon={faPenSquare} />
                 </div>

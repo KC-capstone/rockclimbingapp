@@ -94,6 +94,13 @@ function getSpecificActivity(parm) {
                 DATAVARIABLE2={data} />
               )}
             />
+            <Route exact path='/climbDetail/:id/edit/'  
+              render={(props) => (
+                <LogActivity {...props}
+                DATAVARIABLE1={title}
+                DATAVARIABLE2={data} />
+              )}
+            />
           </div>
     </Switch>
     </div>
