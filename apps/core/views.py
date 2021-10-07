@@ -80,11 +80,21 @@ def climb_detail_by_id(request, activity_id):
     status = 200
     data = {}
     try:
+        #breakpoint()
         activity_data = Activity.objects.get(id=activity_id)
-        data = create_get_activity_data(activity_data)
+        #breakpoint()
+        activity = create_get_activity_data(activity_data)
+        #breakpoint()
+        data = {
+            'activities': {str(activity_id): activity},
+            'activityIDs': [activity_id],
+            'details': 'total_number_of_activities: 1',
+            'showEditYN': True,
+        }
     except:
         data['message'] = "Activity Not Found"
         status = 404
+    #print('DATA HERE:', data)
     return JsonResponse(data,status=status)
 
 def climb_detail_most_recent(request):

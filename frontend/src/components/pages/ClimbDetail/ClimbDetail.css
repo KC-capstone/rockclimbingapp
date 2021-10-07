@@ -26,6 +26,9 @@
 .climbDetailOverview__date {
     font-size: 1rem;
 }
+.climbDetailOverview__editIcon {
+    font-size: 2rem;
+}
 .climbDetailOverview__desc {
     padding: 1rem;
 }

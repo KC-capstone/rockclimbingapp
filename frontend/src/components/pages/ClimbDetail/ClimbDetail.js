@@ -1,84 +1,25 @@
 import React, { useState, useEffect } from 'react';
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import axios  from 'axios';
-import defaultProfile from '../../../assets/profileDefault.png';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { faPenSquare} from '@fortawesome/free-solid-svg-icons/faPenSquare.js'
+import defaultProfilePicture from '../../../assets/profileDefault.png';
 import starFilled from '../../../assets/starFilled.png';
 import './ClimbDetail.css';
 
-function ClimbDetail() {
-    
-    const [activityData, setActivityData] = useState({
-        "title": '---',
-        "rating": '-',
-        "routeType": '---',
-        "description": '---',
-        "date": '---',
-        "location": '---',
-        "climbsCompleted": '---',
-        "toughestRouteCompleted": '---',
-        "imageLink": '',
-        "youtubeLink": '',
-        "climbID": '',
-    });
+function ClimbDetail(props) {
 
     const parm = useParams()['id'];
-    
-    useEffect(getSpecificActivity, [])
-
-    function getSpecificActivity() {
-        console.log('function: getSpecificActivity')
-        
-        axios.defaults.xsrfCookieName = 'csrftoken'
-        axios.defaults.xsrfHeaderName = 'X-CSRFToken'
-        axios.defaults.headers.common = {
-            "Content-Type": "application/json"
-        }
-
-        let config = {
-            url: '/climbDetail',
-            method: 'get',
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        };
-        fetch('/climbdetail/' + parm)
-        .then((r) => r.json())
-        .then((data) => 
-            setActivityData({
-                "title": data['title'],
-                "rating": data['rating'],
-                "routeType": data['routeType'],
-                "description": data['description'],
-                "date": data['date'],
-                "location": data['location'],
-                "climbsCompleted": 'climbsCompleted',
-                "toughestRouteCompleted": data['toughestRouteCompleted'],
-                "imageLink": data['imageLink'],
-                "youtubeLink": data['youtubeLink'],
-            })
-            
-            )
-        
-        
-        
-        .catch((e) => console.log('Boo! Something went wrong.'));
-    }
-
-    
-    
-
-
-
-
+    useEffect(() => props.onGetSpecificActivity(parm), [])
 
   return (
     <div>
         <div className="profileBlock profileBlock--spaceBetween">
             <div className="climbDetailOverview__img">
-                <img src={defaultProfile} alt="climber-stick-figure"/>
+                <img src={defaultProfilePicture} alt="climber-stick-figure"/>
             </div>
             <div className="climbDetailOverview__title">
-                <h1>{activityData['title']}</h1>
+                <h1>{props.activityData['title']}</h1>
             </div>
             <div className="climbDetailOverview__rating">
                 <img className="climbDetailOverview__rating--icon" src={starFilled} alt="star-icon-filled"/>
@@ -88,18 +29,27 @@ function ClimbDetail() {
                 <img className="climbDetailOverview__rating--icon" src={starFilled} alt="star-icon-filled"/>
             </div>
             <div>
-                <p className="climbDetailOverview__difficulty">{activityData['toughestRouteCompleted']}</p>
+                <p className="climbDetailOverview__difficulty">{props.activityData['toughestRouteCompleted']}</p>
             </div>
             <div>
-                <p className="climbDetailOverview__difficulty">Primary Route type: {activityData['routeType']}</p>
+                <p className="climbDetailOverview__difficulty">Primary Route type: {props.activityData['routeType']}</p>
             </div>
             <div className="climbDetailOverview__date">
-                <p>{activityData['date']}</p>
+                <p>{props.activityData['date']}</p>
+            </div>
+            <div>
+            {props.showEditYN ? <Link to="/logActivity">
+                <div className="climbDetailOverview__editIcon">
+                    <FontAwesomeIcon icon={faPenSquare} />
+                </div>
+            </Link> : null}
+            
+                
             </div>
         </div>
 
         <div className="profileBlock profileBlock--spaceBetween">
-            <p className="climbDetailOverview__desc">{activityData['description']}</p>
+            <p className="climbDetailOverview__desc">{props.activityData['description']}</p>
         </div>
         <div className="climbDetailOverview__youTube">
             <iframe width="420" height="315" title="muppets=bohemian-rhapsody-youtube"
