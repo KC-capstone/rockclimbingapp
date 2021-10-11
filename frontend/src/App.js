@@ -9,22 +9,27 @@ import ClimbDetail from './components/pages/ClimbDetail/ClimbDetail.js';
 import LogActivity from './components/pages/LogActivity/LogActivity.js';
 
 function App() {
-  const [title, setTitle] = useState('Rock Climb');
-  const data = 'abcdefg';
   const [activityData, setActivityData] = useState({
-    "title": '---',
-    "rating": '-',
-    "routeType": '---',
-    "description": '---',
-    "date": '---',
-    "location": '---',
-    "climbsCompleted": '---',
-    "toughestRouteCompleted": '---',
+    "title": '',
+    "rating": '',
+    "routeType": '',
+    "description": '',
+    "date": '',
+    "location": '',
+    "climbsCompleted": '',
+    "toughestRouteCompleted": '',
     "imageLink": '',
     "youtubeLink": '',
     "climbID": '',
 });
 const [showEditYN, setShowEditYN] = useState(false);
+function onFormChange (ev) {
+  const {name, value} = ev.target;
+  setActivityData({
+    ...activityData,
+    [name]: value,
+  });
+}
 function getSpecificActivity(parm) {
   console.log('function: getSpecificActivity', parm)
   console.log('Checkpoint A')
@@ -64,10 +69,7 @@ function getSpecificActivity(parm) {
             <Route exact path='/climbDetail/:id' 
               render={(props) => (
                 <ClimbDetail {...props}
-                DATAVARIABLE1={data}
-                DATAVARIABLE2={data}
                 activityData={activityData}
-                //onSetActivityData={ev => setActivityData(ev.target.value)}
                 onSetActivityData={setActivityData}
                 onGetSpecificActivity={getSpecificActivity}
                 showEditYN={showEditYN} />
@@ -77,15 +79,13 @@ function getSpecificActivity(parm) {
             <Route exact path='/logActivity/' 
               render={(props) => (
                 <LogActivity {...props}
-                DATAVARIABLE1={title}
-                DATAVARIABLE2={data} />
+                activityData={activityData}
+                onFormChange={onFormChange} />
               )}
             />
             <Route exact path='/climbDetail/:id/edit/'  
               render={(props) => (
-                <LogActivity {...props}
-                DATAVARIABLE1={title}
-                DATAVARIABLE2={data} />
+                <LogActivity {...props} />
               )}
             />
           </div>
