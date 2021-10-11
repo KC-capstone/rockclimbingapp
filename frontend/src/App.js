@@ -1,6 +1,5 @@
 import React, { useState } from 'react';
 import { Switch, Route } from 'react-router-dom';
-import axios  from 'axios';
 import './App.css';
 import Index from './components/pages/Index/Index.js';
 import Nav from './components/Nav/Nav.js';
@@ -28,18 +27,6 @@ function App() {
 const [showEditYN, setShowEditYN] = useState(false);
 function getSpecificActivity(parm) {
   console.log('function: getSpecificActivity', parm)
-  axios.defaults.xsrfCookieName = 'csrftoken'
-  axios.defaults.xsrfHeaderName = 'X-CSRFToken'
-  axios.defaults.headers.common = {
-      "Content-Type": "application/json"
-  }
-  let config = {
-      url: '/climbDetail',
-      method: 'get',
-      headers: {
-          'Content-Type': 'application/json'
-      }
-  };
   console.log('Checkpoint A')
   fetch('/climbdetail/' + parm)
   .then((r) => r.json())

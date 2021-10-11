@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
 import { useParams, Link } from "react-router-dom";
-import axios  from 'axios';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faPenSquare} from '@fortawesome/free-solid-svg-icons/faPenSquare.js'
 import defaultProfilePicture from '../../../assets/profileDefault.png';

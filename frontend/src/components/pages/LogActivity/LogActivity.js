@@ -1,27 +1,21 @@
 import React, { useState } from 'react';
 import { Link, Redirect } from 'react-router-dom';
-import axios  from 'axios';
 import './LogActivity.css';
 import ActivityForm from '../../ActivityForm/ActivityForm.js'
 
 import { fromStringWithSourceMap } from 'source-list-map';
 
-
-// LogActivity function, we appear to define the state variables and some constants.
-// The state variables comprise each possible form entry for an activity log.
-// The other variables defined are to DRY some of the form entries.
-
 function LogActivity() {
 
     const [activityData, setActivityData] = useState({
-        "title": '---',
-        "rating": '-',
-        "routeType": '---',
-        "description": '---',
-        "date": '---',
-        "location": '---',
-        "climbsCompleted": '---',
-        "toughestRouteCompleted": '---',
+        "title": '',
+        "rating": '',
+        "routeType": '',
+        "description": '',
+        "date": '',
+        "location": '',
+        "climbsCompleted": '',
+        "toughestRouteCompleted": '',
         "imageLink": '',
         "youtubeLink": '',
         "climbID": '',
@@ -37,16 +31,26 @@ function LogActivity() {
     	});
     }
 
+    function getCookie(name) {
+        console.log('function: getcookie')
+        let cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            const cookies = document.cookie.split(';');
+            for (let i = 0; i < cookies.length; i++) {
+                const cookie = cookies[i].trim();
+                // Does this cookie string begin with the name we want?
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        console.log('cookieValue:', cookieValue);
+        return cookieValue;
+    }
     
     function logActivity() {
         console.log('function: logActivity')
-        
-        axios.defaults.xsrfCookieName = 'csrftoken'
-        axios.defaults.xsrfHeaderName = 'X-CSRFToken'
-        axios.defaults.headers.common = {
-            "Content-Type": "application/json"
-        }
-        
         let activityPost = JSON.stringify({
             "title": activityData['title'],
             "rating": activityData['rating'],
@@ -68,11 +72,22 @@ function LogActivity() {
                 'Content-Type': 'application/json'
             }
         };
-        
-        axios.post('/logactivity', activityPost, config)
+        const csrftoken = getCookie('csrftoken');
+        fetch('/logactivity', {
+            method: "POST",
+            mode: 'cors',
+            cache: 'no-cache',
+            credentials: 'include',
+            headers: {
+                'X-CSRFToken': csrftoken,
+                "Content-Type": "application/json",
+            },
+            referrerPolicy: 'no-referrer',
+            body: activityPost,
+            })
         .then(function (response) {
             console.log(response);
-            setloggedIn(true);
+            if (response['status'] == 200) {setloggedIn(true);}
           })
           .catch(function (error) {
             console.log('Here\s the error:', error);

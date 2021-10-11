@@ -20,7 +20,7 @@ function ActivityForm(props) {
 
                     <div className="logActivityForm__rows--spacing">
                         <legend>Title</legend>
-                        <input type="text" id="title" name="title"
+                        <input type="text" id="title" name="title" placeholder="Activity Name"
                             value={props.activityData.title}
                             onChange={props.onFormChange}
                             required/>
@@ -35,7 +35,7 @@ function ActivityForm(props) {
 
                     <div className="logActivityForm__rows--spacing">
                         <legend>Route Type</legend>
-                        <select id="route_type" name= "route_type"
+                        <select id="route_type" name= "routeType"
                             value={props.activityData.routeType}
                             onChange={props.onFormChange}
                             required>
@@ -78,7 +78,7 @@ function ActivityForm(props) {
 
                     <div className="logActivityForm__rows--spacing">
                         <legend>Toughest Route Completed:</legend>
-                        <select id="route_type" name='route_type' value={props.activityData.toughestRouteCompleted}
+                        <select id="route_type" name='toughestRouteCompleted' value={props.activityData.toughestRouteCompleted}
                             onChange={props.onFormChange}
                             required>
                             {routeRatings.map(type =>(

@@ -49,30 +49,36 @@ def log_activity(request):
     # Reassign form data to clear input into instance of Activity model.    
     print('----view: log_activity')
     activitySubmission=json.loads(request.body)
-
+    status = 200
     print('request.user: ', request.user)
     print('request.user.id: ', request.user.id)
     print('Activity submission (AKA request.body):', activitySubmission)
     print('Check if attribute works properly -- Submission title: ', activitySubmission['title'])
 
     # Create instance of activity model and plug in data from form, then save to DB.
-    submission = Activity.objects.create(
-        user = request.user,
-        title = activitySubmission['title'],
-        rating = activitySubmission['rating'],
-        route_type = activitySubmission['routeType'],
-        description = activitySubmission['description'],
-        date = activitySubmission['date'],
-        location = activitySubmission['location'],
-        climbs_completed = activitySubmission['climbsCompleted'],
-        toughest_route_completed = activitySubmission['toughestRouteCompleted'],
-        image = activitySubmission['imageLink'],
-        youtube_link = activitySubmission['youtubeLink'],
-    )
+    data={}
+    try:
+        submission = Activity.objects.create(
+            user = request.user,
+            title = activitySubmission['title'],
+            rating = activitySubmission['rating'],
+            route_type = activitySubmission['routeType'],
+            description = activitySubmission['description'],
+            date = activitySubmission['date'],
+            location = activitySubmission['location'],
+            climbs_completed = activitySubmission['climbsCompleted'],
+            toughest_route_completed = activitySubmission['toughestRouteCompleted'],
+            image = activitySubmission['imageLink'],
+            youtube_link = activitySubmission['youtubeLink'],
+        )
 
-    submission.save()
-    print('Save successful!')
-    return HttpResponse('')
+        submission.save()
+        print('Save successful!')
+        data['message'] = "Activity created"
+    except:
+        status = 404
+        data['message'] = "Activity failed to create"
+    return JsonResponse(data, status=status, )
     #return HttpResponseRedirect("/profile")
 
 def climb_detail_by_id(request, activity_id):
