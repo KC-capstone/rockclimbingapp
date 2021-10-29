@@ -1,26 +1,12 @@
-import React, { useEffect, useState } from 'react';
-import { Link, Redirect } from 'react-router-dom';
-import './LogActivity.css';
+import React, { useState } from 'react';
+import { useParams, Redirect } from 'react-router-dom';
+import './EditActivity.css';
 import ActivityForm from '../../ActivityForm/ActivityForm.js'
 
-function LogActivity(props) {
+function EditActivity(props) {
  
     const [loggedIn, setloggedIn] = useState(false);
-
-    useEffect(() => props.onSetActivityData({
-        "title": '',
-        "rating": '',
-        "routeType": '',
-        "description": '',
-        "date": '',
-        "location": '',
-        "climbsCompleted": '',
-        "toughestRouteCompleted": '',
-        "imageLink": '',
-        "youtubeLink": '',
-        "climbID": '',
-    }), [])
-
+    const parm = useParams()['id'];
     function getCookie(name) {
         console.log('function: getcookie')
         let cookieValue = null;
@@ -37,10 +23,10 @@ function LogActivity(props) {
         }
         console.log('cookieValue:', cookieValue);
         return cookieValue;
-    }
+    };
     
-    function logActivity() {
-        console.log('function: logActivity')
+    function editActivity(parm) {
+        console.log('function: editActivity')
         let activityPost = JSON.stringify({
             "title": props.activityData['title'],
             "rating": props.activityData['rating'],
@@ -55,16 +41,10 @@ function LogActivity(props) {
         });
 
         console.log('activity post:', activityPost);
-        let config = {
-            url: '/logactivity',
-            method: 'post',
-            headers: {
-                'Content-Type': 'application/json'
-            }
-        };
+
         const csrftoken = getCookie('csrftoken');
-        fetch('/logactivity', {
-            method: "POST",
+        fetch('/editactivity' + parm, {
+            method: "PUT",
             mode: 'cors',
             cache: 'no-cache',
             credentials: 'include',
@@ -89,17 +69,17 @@ function LogActivity(props) {
         <div>
             {
                 loggedIn ? (
-                    <Redirect to="/profile"/>
+                    <Redirect to={"//climbDetail/" + parm + "/edit/"}/>
                 ) : null
             }
-            <h1>Log your Activity</h1>
+            <h1>Edit Activity</h1>
             <ActivityForm 
             activityData={props.activityData}
             onFormChange={props.onFormChange}
-            onLogActivity={logActivity}
+            onEditActivity={editActivity}
             />
         </div>
     );
 }
 
-export default LogActivity;
+export default EditActivity;

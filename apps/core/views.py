@@ -5,6 +5,8 @@ from .serializers import ActivitySerializer, UserSerializer
 from .models import Activity
 from apps.core.forms import AddActivity
 from apps.accounts.models import User
+from django.contrib.auth.decorators import login_required
+from django.core.exceptions import SuspiciousOperation
 from django.contrib import messages
 from django.http import HttpResponse, JsonResponse
 
@@ -40,12 +42,6 @@ def example_api_view(request):
 
 #Called on climb form submission -- creates Activity model and fills with submission data.
 def log_activity(request):
-    #this iterator is just to make visual space in terminal for testing.
-    i = 0
-    while i < 5:
-        print(" ")
-        i += 1
-
     # Reassign form data to clear input into instance of Activity model.    
     print('----view: log_activity')
     activitySubmission=json.loads(request.body)
@@ -79,18 +75,43 @@ def log_activity(request):
         status = 404
         data['message'] = "Activity failed to create"
     return JsonResponse(data, status=status, )
-    #return HttpResponseRedirect("/profile")
+
+@login_required
+def edit_activity(request, activity_id):
+    print('----view: edit_activity', activity_id)
+    activitySubmission=json.loads(request.body)
+    status = 200
+    data={}
+    try:
+        database_activity = Activity.objects.get(id=activity_id)
+        # Reject if the ID of the logged-in user doesn't match the activity ID
+        if database_activity.user != request.user:
+            raise SuspiciousOperation("Attempted to edit different user's activity.")
+        database_activity.title = activitySubmission['title'],
+        database_activity.rating = activitySubmission['rating'],
+        database_activity.route_type = activitySubmission['routeType'],
+        database_activity.description = activitySubmission['description'],
+        database_activity.date = activitySubmission['date'],
+        database_activity.location = activitySubmission['location'],
+        database_activity.climbs_completed = activitySubmission['climbsCompleted'],
+        database_activity.toughest_route_completed = activitySubmission['toughestRouteCompleted'],
+        database_activity.image = activitySubmission['imageLink'],
+        database_activity.youtube_link = activitySubmission['youtubeLink'],
+        database_activity.save()
+        print('Save successful!')
+        data['message'] = "Activity edited"
+    except:
+        status = 404
+        data['message'] = "Activity failed to edit"
+    return JsonResponse(data, status=status,)
 
 def climb_detail_by_id(request, activity_id):
     print('----view: climb_detail_by_id')
     status = 200
     data = {}
     try:
-        #breakpoint()
         activity_data = Activity.objects.get(id=activity_id)
-        #breakpoint()
         activity = create_get_activity_data(activity_data)
-        #breakpoint()
         data = {
             'activities': {str(activity_id): activity},
             'activityIDs': [activity_id],
@@ -100,7 +121,6 @@ def climb_detail_by_id(request, activity_id):
     except:
         data['message'] = "Activity Not Found"
         status = 404
-    #print('DATA HERE:', data)
     return JsonResponse(data,status=status)
 
 def climb_detail_most_recent(request):
@@ -119,7 +139,7 @@ def climb_detail_most_recent(request):
     except:
         data['message'] = "Activity Not Found"
         status = 404
-    print('here\'s data', data)
+    #print('here\'s data', data)
     return JsonResponse(data,status=status)
 
 def climb_detail_all_climbs(request):

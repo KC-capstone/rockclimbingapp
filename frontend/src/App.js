@@ -7,6 +7,7 @@ import Profile from './components/pages/Profile/Profile.js';
 import Climbs from './components/pages/Climbs/Climbs.js';
 import ClimbDetail from './components/pages/ClimbDetail/ClimbDetail.js';
 import LogActivity from './components/pages/LogActivity/LogActivity.js';
+import EditActivity from './components/pages/EditActivity/EditActivity.js';
 
 function App() {
   const [activityData, setActivityData] = useState({
@@ -80,12 +81,15 @@ function getSpecificActivity(parm) {
               render={(props) => (
                 <LogActivity {...props}
                 activityData={activityData}
-                onFormChange={onFormChange} />
+                onFormChange={onFormChange}
+                onSetActivityData={setActivityData} />
               )}
             />
             <Route exact path='/climbDetail/:id/edit/'  
               render={(props) => (
-                <LogActivity {...props} />
+                <EditActivity {...props}
+                activityData={activityData}
+                onFormChange={onFormChange} />
               )}
             />
           </div>

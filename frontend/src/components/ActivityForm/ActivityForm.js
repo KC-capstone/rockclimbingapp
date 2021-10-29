@@ -12,6 +12,7 @@ function ActivityForm(props) {
     'Outdoor Lead Climb',
 ];
   const routeRatings = ['VB', 'V1', 'V2', 'V3', 'V4', 'V5', 'V6', 'V7', 'V8+',];
+  
 
   return (
     <div>
@@ -111,7 +112,7 @@ function ActivityForm(props) {
                     <button className="buttonSubmit buttonSubmit__green" onClick={props.onLogActivity} >
                         Save
                     </button>
-                    <Link to="./profile">
+                    <Link to="/profile/">
                         <button className="buttonSubmit buttonSubmit__black">Cancel</button>
                     </Link>
                 </div>
