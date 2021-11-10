@@ -1,6 +1,6 @@
 import React from 'react';
 import './ActivityForm.css';
-import { Link } from 'react-router-dom';
+import { Link, useParams } from 'react-router-dom';
 
 function ActivityForm(props) {
   const routeTypeOptions = [
@@ -12,7 +12,7 @@ function ActivityForm(props) {
     'Outdoor Lead Climb',
 ];
   const routeRatings = ['VB', 'V1', 'V2', 'V3', 'V4', 'V5', 'V6', 'V7', 'V8+',];
-  
+  const parm = useParams()['id'];
 
   return (
     <div>
@@ -109,7 +109,7 @@ function ActivityForm(props) {
                 {/* create a field that contains the user data? */}
 
                 <div className="logActivityForm__rows--spacing">
-                    <button className="buttonSubmit buttonSubmit__green" onClick={props.onLogActivity} >
+                    <button className="buttonSubmit buttonSubmit__green" onClick={() => props.onSaveActivity(parm)} >
                         Save
                     </button>
                     <Link to="/profile/">

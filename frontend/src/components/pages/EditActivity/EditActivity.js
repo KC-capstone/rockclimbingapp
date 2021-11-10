@@ -25,7 +25,7 @@ function EditActivity(props) {
         return cookieValue;
     };
     
-    function editActivity(parm) {
+    function editActivity(parm=null) {
         console.log('function: editActivity')
         let activityPost = JSON.stringify({
             "title": props.activityData['title'],
@@ -69,14 +69,14 @@ function EditActivity(props) {
         <div>
             {
                 loggedIn ? (
-                    <Redirect to={"//climbDetail/" + parm + "/edit/"}/>
+                    <Redirect to={"/climbDetail/" + parm}/>
                 ) : null
             }
             <h1>Edit Activity</h1>
             <ActivityForm 
             activityData={props.activityData}
             onFormChange={props.onFormChange}
-            onEditActivity={editActivity}
+            onSaveActivity={editActivity}
             />
         </div>
     );

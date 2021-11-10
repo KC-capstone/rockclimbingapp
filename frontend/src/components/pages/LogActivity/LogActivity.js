@@ -96,7 +96,7 @@ function LogActivity(props) {
             <ActivityForm 
             activityData={props.activityData}
             onFormChange={props.onFormChange}
-            onLogActivity={logActivity}
+            onSaveActivity={logActivity}
             />
         </div>
     );

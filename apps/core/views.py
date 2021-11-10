@@ -87,22 +87,22 @@ def edit_activity(request, activity_id):
         # Reject if the ID of the logged-in user doesn't match the activity ID
         if database_activity.user != request.user:
             raise SuspiciousOperation("Attempted to edit different user's activity.")
-        database_activity.title = activitySubmission['title'],
-        database_activity.rating = activitySubmission['rating'],
-        database_activity.route_type = activitySubmission['routeType'],
-        database_activity.description = activitySubmission['description'],
-        database_activity.date = activitySubmission['date'],
-        database_activity.location = activitySubmission['location'],
-        database_activity.climbs_completed = activitySubmission['climbsCompleted'],
-        database_activity.toughest_route_completed = activitySubmission['toughestRouteCompleted'],
-        database_activity.image = activitySubmission['imageLink'],
-        database_activity.youtube_link = activitySubmission['youtubeLink'],
+        database_activity.title = activitySubmission['title']
+        database_activity.rating = activitySubmission['rating']
+        database_activity.route_type = activitySubmission['routeType']
+        database_activity.description = activitySubmission['description']
+        database_activity.date = activitySubmission['date']
+        database_activity.location = activitySubmission['location']
+        database_activity.climbs_completed = activitySubmission['climbsCompleted']
+        database_activity.toughest_route_completed = activitySubmission['toughestRouteCompleted']
+        database_activity.image = activitySubmission['imageLink']
+        database_activity.youtube_link = activitySubmission['youtubeLink']
         database_activity.save()
         print('Save successful!')
         data['message'] = "Activity edited"
     except:
         status = 404
-        data['message'] = "Activity failed to edit"
+        data['statusText'] = "Activity failed to edit"
     return JsonResponse(data, status=status,)
 
 def climb_detail_by_id(request, activity_id):

@@ -29,9 +29,10 @@ function Profile() {
         .then(data => {
         console.log('Got data from Django!');
         console.log(data);
+        console.log('Rating data', data['activities']['activity']['rating'], parseFloat(data['activities']['activity']['rating']));
         setActivityData({
             "title": data['activities']['activity']['title'],
-            "rating": data['activities']['activity']['rating'],
+            "rating": parseFloat(data['activities']['activity']['rating']),
             "routeType": data['activities']['activity']['routeType'],
             "description": data['activities']['activity']['description'],
             "date": data['activities']['activity']['date'],
