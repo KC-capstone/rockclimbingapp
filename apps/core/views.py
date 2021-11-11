@@ -105,23 +105,41 @@ def edit_activity(request, activity_id):
         data['statusText'] = "Activity failed to edit"
     return JsonResponse(data, status=status,)
 
+@login_required
 def climb_detail_by_id(request, activity_id):
     print('----view: climb_detail_by_id')
     status = 200
     data = {}
-    try:
+    if request.method == 'GET':
+        try:
+            activity_data = Activity.objects.get(id=activity_id)
+            activity = create_get_activity_data(activity_data)
+            data = {
+                'activities': {str(activity_id): activity},
+                'activityIDs': [activity_id],
+                'details': 'total_number_of_activities: 1',
+                'showEditYN': True,
+            }
+        except:
+            data['message'] = "Activity Not Found"
+            status = 404
+        return JsonResponse(data,status=status)
+    if request.method == 'DELETE':
+        # Get activity to delete.
         activity_data = Activity.objects.get(id=activity_id)
-        activity = create_get_activity_data(activity_data)
-        data = {
-            'activities': {str(activity_id): activity},
-            'activityIDs': [activity_id],
-            'details': 'total_number_of_activities: 1',
-            'showEditYN': True,
-        }
-    except:
-        data['message'] = "Activity Not Found"
-        status = 404
-    return JsonResponse(data,status=status)
+        # Also validate that user is the same as the requested data
+        if activity_data.user != request.user:
+            # raise SuspiciousOperation("Attempted to delete different user's bucket")
+            data['message'] = "Unauthorized"
+            status = 401
+        else:
+            try:
+                activity_data.delete()
+                data['message'] = "Activity deleted successfully."
+            except:
+                data['message'] = "Unable to delete object"
+                status = 400
+        return JsonResponse(data,status=status)
 
 def climb_detail_most_recent(request):
     print('----view: climb_detail_most_recent')
