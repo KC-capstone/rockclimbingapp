@@ -1,7 +1,8 @@
-import React, { useState, useEffect } from 'react';
-import { useParams, Link } from "react-router-dom";
+ import React, { useState, useEffect } from 'react';
+import { useParams, Link, Redirect } from "react-router-dom";
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faPenSquare} from '@fortawesome/free-solid-svg-icons/faPenSquare.js'
+import { faPenSquare } from '@fortawesome/free-solid-svg-icons/faPenSquare.js'
+import { faTrashAlt } from '@fortawesome/free-solid-svg-icons/faTrashAlt.js'
 import defaultProfilePicture from '../../../assets/profileDefault.png';
 import starFilled from '../../../assets/starFilled.png';
 import './ClimbDetail.css';
@@ -9,10 +10,56 @@ import './ClimbDetail.css';
 function ClimbDetail(props) {
 
     const parm = useParams()['id'];
+    const [activityDeletedYN, setActivityDeletedYN] = useState(false);
     useEffect(() => props.onGetSpecificActivity(parm), [])
+
+    function getCookie(name) {
+        let cookieValue = null;
+        if (document.cookie && document.cookie !== '') {
+            const cookies = document.cookie.split(';');
+            for (let i = 0; i < cookies.length; i++) {
+                const cookie = cookies[i].trim();
+                // Does this cookie string begin with the name we want?
+                if (cookie.substring(0, name.length + 1) === (name + '=')) {
+                    cookieValue = decodeURIComponent(cookie.substring(name.length + 1));
+                    break;
+                }
+            }
+        }
+        return cookieValue;
+    };
+
+    function deleteActivity(parm) {
+        console.log('function: deleteActivity', parm)
+        const csrftoken = getCookie('csrftoken');
+        fetch('/climbdetail/' + parm, {
+            method: "DELETE",
+            mode: 'cors',
+            cache: 'no-cache',
+            credentials: 'include',
+            headers: {
+                'X-CSRFToken': csrftoken,
+                "Content-Type": "application/json",
+            },
+            referrerPolicy: 'no-referrer',
+            body: null,
+            })
+        .then(function (response) {
+            console.log('deleteActivity response:', response);
+            if (response['status'] == 200) {setActivityDeletedYN(true);}
+          })
+          .catch(function (error) {
+            console.log('Here\s the error:', error);
+          });
+    }
 
   return (
     <div>
+        {
+                activityDeletedYN ? (
+                    <Redirect to="/profile"/>
+                ) : null
+            }
         <div className="profileBlock profileBlock--spaceBetween">
             <div className="climbDetailOverview__img">
                 <img src={defaultProfilePicture} alt="climber-stick-figure"/>
@@ -37,11 +84,22 @@ function ClimbDetail(props) {
                 <p>{props.activityData['date']}</p>
             </div>
             <div>
-            {props.showEditYN ? <Link to={"/climbDetail/" + parm + "/edit/"}>
-                <div className="climbDetailOverview__editIcon">
-                    <FontAwesomeIcon icon={faPenSquare} />
+            {props.showEditYN ? 
+            
+                <div className="climbDetailOverview__Icon">
+                    <Link to={"/climbDetail/" + parm + "/edit/"}>
+                        <div className="climbDetailOverview__Icon-spacing" >
+                            <FontAwesomeIcon icon={faPenSquare} />
+                        </div>
+                    </Link>
+                    <div onClick={() => deleteActivity(parm)} className="climbDetailOverview__Icon-spacing" >
+                        <FontAwesomeIcon icon={faTrashAlt} />
+                    </div>
+
                 </div>
-            </Link> : null}
+           
+            
+            : null}
             
                 
             </div>

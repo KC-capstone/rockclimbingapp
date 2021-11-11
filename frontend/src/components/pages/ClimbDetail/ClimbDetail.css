@@ -26,8 +26,15 @@
 .climbDetailOverview__date {
     font-size: 1rem;
 }
-.climbDetailOverview__editIcon {
+.climbDetailOverview__Icon {
     font-size: 2rem;
+}
+.climbDetailOverview__Icon-spacing {
+    display: inline-block;
+    margin: 0 0.5rem;
+}
+.climbDetailOverview__Icon-spacing:hover {
+    cursor: pointer;
 }
 .climbDetailOverview__desc {
     padding: 1rem;

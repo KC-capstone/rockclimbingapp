@@ -9,6 +9,7 @@ from django.contrib.auth.decorators import login_required
 from django.core.exceptions import SuspiciousOperation
 from django.contrib import messages
 from django.http import HttpResponse, JsonResponse
+from django.utils import timezone
 
 # Two example views. Change or delete as necessary.
 def home(request):
@@ -99,7 +100,7 @@ def edit_activity(request, activity_id):
         database_activity.youtube_link = activitySubmission['youtubeLink']
         database_activity.save()
         print('Save successful!')
-        data['message'] = "Activity edited"
+        data['statusText'] = "Activity edited"
     except:
         status = 404
         data['statusText'] = "Activity failed to edit"
@@ -107,7 +108,9 @@ def edit_activity(request, activity_id):
 
 @login_required
 def climb_detail_by_id(request, activity_id):
-    print('----view: climb_detail_by_id')
+    #
+    # breakpoint()
+    print('----view: climb_detail_by_id', request.method, activity_id)
     status = 200
     data = {}
     if request.method == 'GET':
@@ -121,7 +124,7 @@ def climb_detail_by_id(request, activity_id):
                 'showEditYN': True,
             }
         except:
-            data['message'] = "Activity Not Found"
+            data['statusText'] = "Activity Not Found"
             status = 404
         return JsonResponse(data,status=status)
     if request.method == 'DELETE':
@@ -130,14 +133,16 @@ def climb_detail_by_id(request, activity_id):
         # Also validate that user is the same as the requested data
         if activity_data.user != request.user:
             # raise SuspiciousOperation("Attempted to delete different user's bucket")
-            data['message'] = "Unauthorized"
+            data['statusText'] = "Unauthorized"
             status = 401
         else:
             try:
-                activity_data.delete()
-                data['message'] = "Activity deleted successfully."
+                #activity_data.delete()
+                activity_data.removedDate = timezone.now()
+                activity_data.save()
+                data['statusText'] = "Activity deleted successfully (removedDate used)."
             except:
-                data['message'] = "Unable to delete object"
+                data['statusText'] = "Unable to delete object"
                 status = 400
         return JsonResponse(data,status=status)
 
@@ -147,7 +152,7 @@ def climb_detail_most_recent(request):
     data = {}
     try:
         activity_data = Activity.objects.filter(user=request.user, removedDate__isnull=True).order_by('-date')[:1]
-        print('activity data:', activity_data)
+        #print('activity data:', activity_data)
         activities = {}
         for activity in activity_data:
             activities['activity'] = create_get_activity_data(activity)
@@ -155,7 +160,7 @@ def climb_detail_most_recent(request):
             'activities': activities,
         }
     except:
-        data['message'] = "Activity Not Found"
+        data['statusText'] = "Activity Not Found"
         status = 404
     #print('here\'s data', data)
     return JsonResponse(data,status=status)
