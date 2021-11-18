@@ -6,21 +6,21 @@
 
 
 {% block content %}
-<div class="jumbotron">
-  <h1 class="display-4">My Site</h1>
-  <p class="lead">This is a simple Jumbotron component from Bootstrap 4.</p>
-  <hr class="my-4">
-  <p>Edit this to include your content.</p>
-  <p class="lead">
-    <a class="btn btn-primary btn-lg" href="{% url 'about' %}" role="button">Learn more</a>
+
+
+<div class="header">
+  <h1 class="title">Arete</h1>
+  <p>Know your leads.</p>
+  <div class="container__buttons">
     {% if user.is_authenticated %}
       <a class="btn btn-primary btn-lg" href="./profile" role="button">Go to Profile</a>
+      <a class="nav-link" href="{% url 'logout' %}" >Sign Out</a>
+    {% else %}
+      <a class="button" href="{% url 'login' %}">Log In</a>
+      <a class="button" href="{% url 'signup' %}">Sign up</a>
+      
     {% endif %}
-  </p>
+    <a class="button" href="{% url 'about' %}" role="button">Learn more</a>
+  </div>
 </div>
-
-<p>More stuff. {{ example_context_variable }}.</p>
-
 {% endblock content %}
-
-

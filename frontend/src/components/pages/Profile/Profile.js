@@ -63,15 +63,15 @@ function Profile() {
         </div>
         <div className="profileBlock profileBlock--spaceAround">
             <div className="profileBlock__statOverview">
-                <p className="profileBlock__statOverview--num">9</p>
+                <p className="profileBlock__statOverview--num">WIP</p>
                 <p className="profileBlock__statOverview--text">Activities in the last month</p>
             </div>
             <div className="profileBlock__statOverview">
-                <p className="profileBlock__statOverview--num">52</p>
+                <p className="profileBlock__statOverview--num">WIP</p>
                 <p className="profileBlock__statOverview--text">Routes Completed</p>
             </div>
             <div className="profileBlock__statOverview">
-                <p className="profileBlock__statOverview--num">V4</p>
+                <p className="profileBlock__statOverview--num">WIP</p>
                 <p className="profileBlock__statOverview--text">Toughest Route</p>
             </div>
         </div>
