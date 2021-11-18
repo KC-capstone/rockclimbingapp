@@ -43,7 +43,7 @@ function EditActivity(props) {
         console.log('activity post:', activityPost);
 
         const csrftoken = getCookie('csrftoken');
-        fetch('/editactivity' + parm, {
+        fetch('/editactivity/' + parm, {
             method: "PUT",
             mode: 'cors',
             cache: 'no-cache',
