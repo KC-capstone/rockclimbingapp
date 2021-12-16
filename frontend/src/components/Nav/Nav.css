@@ -39,4 +39,20 @@
     left: 50%;
     transform: translate(-50%,-50%);
   }
+  .nav__link--center .nav__link--tooltip {
+    font-size: 0.8rem;
+    visibility: hidden;
+    width: 120px;
+    background-color: black;
+    color: #fff;
+    text-align: center;
+    border-radius: 6px;
+    padding: 5px 0;
   
+    /* Position the tooltip */
+    position: absolute;
+    z-index: 1; 
+  }
+  .nav__link--center:hover .nav__link--tooltip {
+    visibility: visible;
+  }

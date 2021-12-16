@@ -8,6 +8,7 @@ from apps.accounts.models import User
 from django.contrib.auth.decorators import login_required
 from django.core.exceptions import SuspiciousOperation
 from django.contrib import messages
+from django.contrib.auth import logout
 from django.http import HttpResponse, JsonResponse
 from django.utils import timezone
 
@@ -36,10 +37,18 @@ def react_app(request):
 
 # Greg: attempting server setup
 
-def example_api_view(request):
-    return JsonResponse({
-        'testing': 'Does this work?'
-    })
+def log_out(request):
+    print('----view: log_out')
+    status = 200
+    data={}
+    try:
+        logout(request)
+        data['message'] = "Successfully Logged out"
+    except:
+        status = 404
+        data['message'] = "Activity failed to create"
+    data['status'] = status
+    return JsonResponse(data, status=status,)
 
 #Called on climb form submission -- creates Activity model and fills with submission data.
 def log_activity(request):
@@ -165,6 +174,7 @@ def climb_detail_most_recent(request):
     #print('here\'s data', data)
     return JsonResponse(data,status=status)
 
+@login_required
 def climb_detail_all_climbs(request):
     print('----view: climb_detail_most_recent', request, request.GET['startPos'])
     status = 200
