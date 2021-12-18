@@ -1,6 +1,5 @@
 from django.shortcuts import render, redirect, HttpResponseRedirect
 import json
-from rest_framework import viewsets
 from .serializers import ActivitySerializer, UserSerializer
 from .models import Activity
 from apps.core.forms import AddActivity
@@ -244,12 +243,3 @@ def create_get_activity_data(activity_data):
             "climbID": activity_data.id,
             }
     return data
-
-
-class ActivityViewSet(viewsets.ModelViewSet):
-    queryset = Activity.objects.all()
-    serializer_class = ActivitySerializer
-
-class UserViewSet(viewsets.ModelViewSet):
-    queryset = User.objects.all()
-    serializer_class = UserSerializer
