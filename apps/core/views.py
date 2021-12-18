@@ -1,6 +1,5 @@
 from django.shortcuts import render, redirect, HttpResponseRedirect
 import json
-from .serializers import ActivitySerializer, UserSerializer
 from .models import Activity
 from apps.core.forms import AddActivity
 from apps.accounts.models import User
