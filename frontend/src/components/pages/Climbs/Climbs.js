@@ -21,27 +21,27 @@ function Climbs() {
         .then(data => {
         console.log('Got data from Django!');
         console.log(data);
-        let activityIDArray = data['activityIDs'];
+        let activityIDArray = data['data']['activityIDs'];
         let activityRenderData = [];
         for (let activity of activityIDArray) {
             //console.log('activity:', activity)
             activityRenderData.push({
-                "title": data['activities'][activity]['title'],
-                "rating": data['activities'][activity]['rating'],
-                "routeType": data['activities'][activity]['routeType'],
-                "description": data['activities'][activity]['description'],
-                "date": data['activities'][activity]['date'],
-                "location": data['activities'][activity]['location'],
-                "climbsCompleted": data['activities'][activity]['climbsCompleted'],
-                "toughestRouteCompleted": data['activities'][activity]['toughestRouteCompleted'],
-                "imageLink": data['activities'][activity]['imageLink'],
-                "youtubeLink": data['activities'][activity]['youtubeLink'],
-                "climbID": data['activities'][activity]['climbID'],
+                "title": data['data']['activities'][activity]['title'],
+                "rating": data['data']['activities'][activity]['rating'],
+                "routeType": data['data']['activities'][activity]['routeType'],
+                "description": data['data']['activities'][activity]['description'],
+                "date": data['data']['activities'][activity]['date'],
+                "location": data['data']['activities'][activity]['location'],
+                "climbsCompleted": data['data']['activities'][activity]['climbsCompleted'],
+                "toughestRouteCompleted": data['data']['activities'][activity]['toughestRouteCompleted'],
+                "imageLink": data['data']['activities'][activity]['imageLink'],
+                "youtubeLink": data['data']['activities'][activity]['youtubeLink'],
+                "climbID": data['data']['activities'][activity]['climbID'],
             })
         }
-        console.log('number of results:', data['details']['total_number_of_activities'], Math.ceil((data['details']['total_number_of_activities'])/3))
+        //console.log('number of results:', data['data']['details']['total_number_of_activities'], Math.ceil((data['data']['details']['total_number_of_activities'])/3))
         setActivityData(activityRenderData);
-        setPages(Math.ceil((data['details']['total_number_of_activities']/3)));
+        setPages(Math.ceil((data['data']['details']['total_number_of_activities']/3)));
         //console.log('pages:', pages)
         document.body.scrollTop = 0; // For Safari
         document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera

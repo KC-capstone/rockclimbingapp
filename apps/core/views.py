@@ -133,7 +133,10 @@ def climb_detail_by_id(request, activity_id):
                 'showEditYN': True,
             }
         except:
-            data['statusText'] = "Activity Not Found"
+            data = {
+            'status': "fail",
+            'data': { 'activity': 'Could not find an activity corresponding to the provided userID.' }
+            }
             status = 404
         return JsonResponse(data,status=status)
     if request.method == 'DELETE':
@@ -142,7 +145,10 @@ def climb_detail_by_id(request, activity_id):
         # Also validate that user is the same as the requested data
         if activity_data.user != request.user:
             # raise SuspiciousOperation("Attempted to delete different user's bucket")
-            data['statusText'] = "Unauthorized"
+            data = {
+            'status': "error",
+            "message" : "Unauthorized: user is not able to delete data of another user."
+            }
             status = 401
         else:
             try:
@@ -161,70 +167,53 @@ def climb_detail_most_recent(request):
     data = {}
     try:
         activity_data = Activity.objects.filter(user=request.user, removedDate__isnull=True).order_by('-date')[:1]
-        #print('activity data:', activity_data)
         activities = {}
         for activity in activity_data:
             activities['activity'] = create_get_activity_data(activity)
         data = {
-            'activities': activities,
+            'status': "success",
+            'data': { 'activities': activities }
         }
     except:
-        data['statusText'] = "Activity Not Found"
+        data = {
+            'status': "fail",
+            'data': { 'activity': 'Could not find an activity corresponding to the provided userID.' }
+        }
         status = 404
-    #print('here\'s data', data)
     return JsonResponse(data,status=status)
 
 @login_required
 def climb_detail_all_climbs(request):
-    print('----view: climb_detail_most_recent', request, request.GET['startPos'])
     status = 200
     data = {}
     start_position = 0
-    #breakpoint()
     if 'startPos' in request.GET:
         start_position = int(request.GET['startPos'])
     try:
         activity_data = Activity.objects.filter(user=request.user, removedDate__isnull=True).order_by('-date')
-        #print('activity data:', activity_data)
         activities = {}
         activity_ids = []
         number_of_activities = len(activity_data)
         details = {'total_number_of_activities': number_of_activities,}
         end_position = min(start_position + 3, number_of_activities)
-        print('We\'ve made it this far', start_position, end_position)
         for i in range(start_position,end_position):
-            print('-----climbID:', activity_data[i].id)
             activities[str(activity_data[i].id)] = create_get_activity_data(activity_data[i])
             activity_ids.append(activity_data[i].id)
         data = {
-            'activities': activities,
-            'activityIDs': activity_ids,
-            'details': details
-        }
-        data['message'] = "Successful"
-    except:
-        data['message'] = "Activity Not Found"
-        status = 404
-    #print('here\'s data', data)
-    return JsonResponse(data,status=status)
-
-
-
-def create_filter_activity_data(activity_data):
-    data = {
-            "title": activity_data[0].title,
-            "rating": activity_data[0].rating,
-            "routeType": activity_data[0].route_type,
-            "description": activity_data[0].description,
-            "date": activity_data[0].date,
-            "location": activity_data[0].location,
-            "climbsCompleted": activity_data[0].climbs_completed,
-            "toughestRouteCompleted": activity_data[0].toughest_route_completed,
-            "imageLink": activity_data[0].image,
-            "youtubeLink": activity_data[0].toughest_route_completed,
-            "climbID": activity_data[0].id,
+            'status': "success",
+            'data': {
+                    'activities': activities,
+                    'activityIDs': activity_ids,
+                    'details': details
             }
-    return data
+        }
+    except:
+        data = {
+            'status': "fail",
+            'data': { 'activity': 'Could not gather activities corresponding to the provided userID.' }
+        }
+        status = 404
+    return JsonResponse(data,status=status)
 
 def create_get_activity_data(activity_data):
     data = {

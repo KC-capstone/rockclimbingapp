@@ -29,19 +29,19 @@ function Profile() {
         .then(data => {
         console.log('Got data from Django!');
         console.log(data);
-        console.log('Rating data', data['activities']['activity']['rating'], parseFloat(data['activities']['activity']['rating']));
+        console.log('Rating data', data['data']['activities']['activity']['rating'], parseFloat(data['data']['activities']['activity']['rating']));
         setActivityData({
-            "title": data['activities']['activity']['title'],
-            "rating": parseFloat(data['activities']['activity']['rating']),
-            "routeType": data['activities']['activity']['routeType'],
-            "description": data['activities']['activity']['description'],
-            "date": data['activities']['activity']['date'],
-            "location": data['activities']['activity']['location'],
-            "climbsCompleted": data['activities']['activity']['climbsCompleted'],
-            "toughestRouteCompleted": data['activities']['activity']['toughestRouteCompleted'],
-            "imageLink": data['activities']['activity']['imageLink'],
-            "youtubeLink": data['activities']['activity']['youtubeLink'],
-            "climbID": data['activities']['activity']['climbID'],
+            "title": data['data']['activities']['activity']['title'],
+            "rating": parseFloat(data['data']['activities']['activity']['rating']),
+            "routeType": data['data']['activities']['activity']['routeType'],
+            "description": data['data']['activities']['activity']['description'],
+            "date": data['data']['activities']['activity']['date'],
+            "location": data['data']['activities']['activity']['location'],
+            "climbsCompleted": data['data']['activities']['activity']['climbsCompleted'],
+            "toughestRouteCompleted": data['data']['activities']['activity']['toughestRouteCompleted'],
+            "imageLink": data['data']['activities']['activity']['imageLink'],
+            "youtubeLink": data['data']['activities']['activity']['youtubeLink'],
+            "climbID": data['data']['activities']['activity']['climbID'],
         })
         });
     }
