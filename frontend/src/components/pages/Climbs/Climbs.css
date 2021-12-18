@@ -20,6 +20,7 @@
 }
 
 .pagination span:hover:not(.active) {background-color: #ddd;}
+.pagination .noChange:hover:not(.active) {background-color: transparent;}
 .center {
     text-align: center;
 }

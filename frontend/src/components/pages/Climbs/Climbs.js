@@ -46,7 +46,7 @@ function Climbs() {
         document.body.scrollTop = 0; // For Safari
         document.documentElement.scrollTop = 0; // For Chrome, Firefox, IE and Opera
         })
-        //.then();
+        .then(setCurrentPage(startPage));
     }
 
 
@@ -80,12 +80,24 @@ function Climbs() {
 
         <div id="paginationBar" className="center">
             <div className="pagination">
-            
-                <span href="#">&laquo;</span>
+                { currentPage === 1 ?
+                        <span className="noChange">&laquo;</span>
+                        :
+                        <span onClick={() => getClimbDetailData(currentPage - 1)}>&laquo;</span>
+                    
+                }
                 {range(1,pages).map(page => (
-                {...page === currentPage ? <span className="active" onClick={() => getClimbDetailData(page)}>{page}</span> : <span onClick={() => getClimbDetailData(page)}>{page}</span>}
-            ))}
-                <span href="#">&raquo;</span>
+                    {...page === currentPage ? 
+                    <span className="active" onClick={() => getClimbDetailData(page)}>{page}</span> 
+                    :
+                    <span onClick={() => getClimbDetailData(page)}>{page}</span>}
+                ))}
+                { currentPage === pages ?
+                        <span className="noChange">&raquo;</span>
+                        :
+                        <span onClick={() => getClimbDetailData(currentPage + 1)}>&raquo;</span>
+                    
+                }
             </div>
         </div>
 
