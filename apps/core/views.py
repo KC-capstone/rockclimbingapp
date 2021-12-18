@@ -27,41 +27,35 @@ def about(request):
 
     return render(request, 'pages/about.html', context)
 
-# This was added per instructions in the django-kcproject-starter README for adding a React App.
-# This is supposed to serve up frontend's index.html in the build directory to "kick things off"?
-
+# This serves up frontend's index.html in the build directory to "kick things off"
 def react_app(request):
     index_contents = open('./frontend/build/index.html').read()
     return HttpResponse(index_contents)
 
-
-# Greg: attempting server setup
-
 def log_out(request):
-    print('----view: log_out')
     status = 200
     data={}
     try:
         logout(request)
-        data['message'] = "Successfully Logged out"
+        data = {
+            'status': "success",
+            'data': None,
+        }
     except:
         status = 404
-        data['message'] = "Activity failed to create"
+        data = {
+            'status': "error",
+            'message': 'Logout attempt failed.',
+        }
     data['status'] = status
     return JsonResponse(data, status=status,)
 
-#Called on climb form submission -- creates Activity model and fills with submission data.
+@login_required
 def log_activity(request):
     # Reassign form data to clear input into instance of Activity model.    
     print('----view: log_activity')
     activitySubmission=json.loads(request.body)
     status = 200
-    print('request.user: ', request.user)
-    print('request.user.id: ', request.user.id)
-    print('Activity submission (AKA request.body):', activitySubmission)
-    print('Check if attribute works properly -- Submission title: ', activitySubmission['title'])
-
-    # Create instance of activity model and plug in data from form, then save to DB.
     data={}
     try:
         submission = Activity.objects.create(
@@ -77,13 +71,17 @@ def log_activity(request):
             image = activitySubmission['imageLink'],
             youtube_link = activitySubmission['youtubeLink'],
         )
-
         submission.save()
-        print('Save successful!')
-        data['message'] = "Activity created"
+        data = {
+            'status': "success",
+            'data': None,
+        }
     except:
         status = 404
-        data['message'] = "Activity failed to create"
+        data = {
+            'status': "error",
+            'message': 'Activity failed to create.',
+        }
     return JsonResponse(data, status=status, )
 
 @login_required
@@ -109,17 +107,21 @@ def edit_activity(request, activity_id):
         database_activity.youtube_link = activitySubmission['youtubeLink']
         database_activity.save()
         print('Save successful!')
-        data['statusText'] = "Activity edited"
+        data = {
+            'status': "success",
+            'data': None,
+        }
     except:
         status = 404
-        data['statusText'] = "Activity failed to edit"
+        data = {
+            'status': "error",
+            'message': 'Activity failed to edit.',
+        }
     return JsonResponse(data, status=status,)
 
 @login_required
 def climb_detail_by_id(request, activity_id):
-    #
-    # breakpoint()
-    print('----view: climb_detail_by_id', request.method, activity_id)
+    print('----view: climb_detail_by_id')
     status = 200
     data = {}
     if request.method == 'GET':
@@ -132,33 +134,45 @@ def climb_detail_by_id(request, activity_id):
                 'details': 'total_number_of_activities: 1',
                 'showEditYN': True,
             }
-        except:
             data = {
-            'status': "fail",
-            'data': { 'activity': 'Could not find an activity corresponding to the provided userID.' }
+                'status': "success",
+                'data': {
+                    'activities': {str(activity_id): activity},
+                    'activityIDs': [activity_id],
+                    'details': 'total_number_of_activities: 1',
+                    'showEditYN': True,
+                },
             }
+        except:
             status = 404
+            data = {
+            'status': "error",
+            'message': 'Could not find an activity corresponding to the provided userID.',
+            }
         return JsonResponse(data,status=status)
     if request.method == 'DELETE':
-        # Get activity to delete.
         activity_data = Activity.objects.get(id=activity_id)
-        # Also validate that user is the same as the requested data
         if activity_data.user != request.user:
             # raise SuspiciousOperation("Attempted to delete different user's bucket")
             data = {
-            'status': "error",
-            "message" : "Unauthorized: user is not able to delete data of another user."
+            'status': "fail",
+            "data" : {"userID": "Attempted to delete different user's bucket"}
             }
             status = 401
         else:
             try:
-                #activity_data.delete()
                 activity_data.removedDate = timezone.now()
                 activity_data.save()
-                data['statusText'] = "Activity deleted successfully (removedDate used)."
+                data = {
+                    'status': "success",
+                    'data': None,
+                }
             except:
-                data['statusText'] = "Unable to delete object"
                 status = 400
+                data = {
+                    'status': "error",
+                    'message': 'Unable to delete activity.',
+                }
         return JsonResponse(data,status=status)
 
 def climb_detail_most_recent(request):

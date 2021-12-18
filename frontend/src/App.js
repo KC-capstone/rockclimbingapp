@@ -36,9 +36,8 @@ function getSpecificActivity(parm) {
   console.log('Checkpoint A')
   fetch('/climbdetail/' + parm)
   .then((r) => r.json())
-  .then((data) => {
-      //console.log('Got data from Django!');
-      //console.log('Here\s data', data);
+  .then((result) => {
+      const data = result['data']
       const activityID = data['activityIDs'][0];
       setActivityData({
           "title": data['activities'][activityID]['title'],
