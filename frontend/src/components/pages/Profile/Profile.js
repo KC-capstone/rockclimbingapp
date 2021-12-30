@@ -20,7 +20,11 @@ function Profile() {
         "climbID": '',
     });
 
-    useEffect(getClimbDetailMostRecent, []);
+    const [activityCount, setActivityCount] = useState(0);
+    const [routeCount, setRouteCount] = useState(0);
+    const [toughestRoute, setToughestRoute] = useState(0);
+
+    useEffect(getClimbDetailMostRecent, getProfileClimbStats, []);
 
     function getClimbDetailMostRecent() {
         console.log('getClimbDetailMostRecent');
@@ -45,6 +49,17 @@ function Profile() {
         })
         });
     }
+
+    function getProfileClimbStats() {
+        console.log('function: getProfileClimbStats');
+        fetch('/climbStatsHighlights')
+        .then(response => response.json())
+        .then(response => {
+            setActivityCount(response['data']['activityCount']);
+            setRouteCount(response['data']['routeCount']);
+            setToughestRoute(response['data']['toughest route']);
+        })
+    }
       
   
   return (
@@ -63,15 +78,15 @@ function Profile() {
         </div>
         <div className="profileBlock profileBlock--spaceAround">
             <div className="profileBlock__statOverview">
-                <p className="profileBlock__statOverview--num">WIP</p>
+                <p className="profileBlock__statOverview--num">{activityCount}</p>
                 <p className="profileBlock__statOverview--text">Activities in the last month</p>
             </div>
             <div className="profileBlock__statOverview">
-                <p className="profileBlock__statOverview--num">WIP</p>
+                <p className="profileBlock__statOverview--num">{routeCount}</p>
                 <p className="profileBlock__statOverview--text">Routes Completed</p>
             </div>
             <div className="profileBlock__statOverview">
-                <p className="profileBlock__statOverview--num">WIP</p>
+                <p className="profileBlock__statOverview--num">{toughestRoute}</p>
                 <p className="profileBlock__statOverview--text">Toughest Route</p>
             </div>
         </div>
